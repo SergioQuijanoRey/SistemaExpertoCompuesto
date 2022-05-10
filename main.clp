@@ -26,6 +26,11 @@
 (load sergio/mostrar_resultado.clp)
 (load sergio/estado_inicial.clp)
 
+; Ficheros de Carlos Lara Casanova
+(load carlos.clp)
+
+; Ficheros de Luis Rodriguez Domingo
+(load luis.clp)
 
 ; Ejecutamos el codigo
 (reset)
