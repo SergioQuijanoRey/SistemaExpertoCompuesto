@@ -18,6 +18,9 @@
 ; principalmente Inteligencia de Negocio). Asi que por esa asignatura, aconsejo esa rama
 (defrule EmpateGustaMatesEntoncesSistemas
 
+    ; Estamos en el modulo de Sergio
+    (ModuloConversacion (modulo sergio))
+
     (declare (salience 8000))
 
     ; Nos encontramos en una situacion de empate
@@ -43,6 +46,10 @@
 
 ; Si la nota media es muy alta, entonces recomendamos Sistemas, que es en mi opinion algo mas compleja
 (defrule EmpateNotaMuyAltaEntoncesSistemas
+
+    ; Estamos en el modulo de Sergio
+    (ModuloConversacion (modulo sergio))
+
     (declare (salience 8000))
 
     ; Nos encontramos en una situacion de empate
@@ -72,6 +79,10 @@
 ; Si al estudiante le gusta la administracion de bases de datos, recomendamos Sistemas porque tiene
 ; un par de asignaturas de administracion de bases de datos
 (defrule gustaBasesDeDatosEntoncesSistemas
+
+    ; Estamos en el modulo de Sergio
+    (ModuloConversacion (modulo sergio))
+
     (declare (salience 8000))
 
     ; Nos encontramos en una situacion de empate
@@ -99,6 +110,9 @@
 ; Si al estudiante le gusta usar linux, le recomiendo Tecnologias, porque tiene algunas asignaturas
 ; que se basan bastante en el manejo de linux
 (defrule gustaLinuxEntoncesTecnologias
+
+    ; Estamos en el modulo de Sergio
+    (ModuloConversacion (modulo sergio))
 
     (declare (salience 8000))
 
@@ -128,6 +142,10 @@
 ; Si al usuario no le gusta linux, entonces recomiendo Sistemas, porque en Tecnologias tiene que trabajar
 ; bastante con linux
 (defrule NoGustaLinuxEntoncesSistemas
+
+    ; Estamos en el modulo de Sergio
+    (ModuloConversacion (modulo sergio))
+
     (declare (salience 8000))
 
     ; Nos encontramos en una situacion de empate

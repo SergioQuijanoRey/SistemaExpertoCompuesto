@@ -8,6 +8,8 @@
 ; Regla para iniciar la conversacion con el usuario
 ; Mostramos un mensaje introductorio
 (defrule ConversacionPresentacion
+    ; Estamos en el modulo de Sergio
+    (ModuloConversacion (modulo sergio))
 
     (declare (salience -1))
 
@@ -26,6 +28,9 @@
 
 (defrule ConversacionGustaHardware
 
+    ; Estamos en el modulo de Sergio
+    (ModuloConversacion (modulo sergio))
+
     (declare (salience -2))
 
     ; Comprobamos que no hayamos terminado con la conversacion
@@ -42,6 +47,9 @@
 )
 
 (defrule ValidarEstudianteGustaHardware
+
+    ; Estamos en el modulo de Sergio
+    (ModuloConversacion (modulo sergio))
 
     ; Las comprobaciones de seguridad tienen prioridad 7000
     (declare (salience 7000))
@@ -66,6 +74,9 @@
 )
 
 (defrule RepiteConversacionGustaHardware
+
+    ; Estamos en el modulo de Sergio
+    (ModuloConversacion (modulo sergio))
 
     ; Asigno la misma prioridad que la prioridad de la pregunta que estamos corrigiendo
     (declare (salience -2))
@@ -109,6 +120,10 @@
 
 
 (defrule conversacionNotaMedia
+
+    ; Estamos en el modulo de Sergio
+    (ModuloConversacion (modulo sergio))
+
     (declare (salience -3))
 
     ; Comprobamos que no hayamos terminado con la conversacion
@@ -125,6 +140,9 @@
 
 
 (defrule ValidarNotaMediaRangos
+
+    ; Estamos en el modulo de Sergio
+    (ModuloConversacion (modulo sergio))
 
     ; Las comprobaciones de seguridad tienen prioridad 7000
     (declare (salience 7000))
@@ -147,6 +165,9 @@
 
 
 (defrule RepiteConversacionNotaMedia
+
+    ; Estamos en el modulo de Sergio
+    (ModuloConversacion (modulo sergio))
 
     ; Asigno la misma prioridad que la prioridad de la pregunta que estamos corrigiendo
     (declare (salience -3))
@@ -186,6 +207,9 @@
 
 (defrule ConversacionGustaMatematicas
 
+    ; Estamos en el modulo de Sergio
+    (ModuloConversacion (modulo sergio))
+
     (declare (salience -4))
 
     ; Comprobamos que no hayamos terminado con la conversacion
@@ -202,6 +226,9 @@
 )
 
 (defrule ValidarEstudianteGustaMatematicas
+
+    ; Estamos en el modulo de Sergio
+    (ModuloConversacion (modulo sergio))
 
     ; Las comprobaciones de seguridad tienen prioridad 7000
     (declare (salience 7000))
@@ -225,6 +252,9 @@
 )
 
 (defrule RepiteConversacionGustaMatematicas
+
+    ; Estamos en el modulo de Sergio
+    (ModuloConversacion (modulo sergio))
 
     ; Asigno la misma prioridad que la prioridad de la pregunta que estamos corrigiendo
     (declare (salience -4))
@@ -266,6 +296,9 @@
 
 (defrule ConversacionGustaProgramar
 
+    ; Estamos en el modulo de Sergio
+    (ModuloConversacion (modulo sergio))
+
     (declare (salience -5))
 
     ; Comprobamos que no hayamos terminado con la conversacion
@@ -289,6 +322,9 @@
 
 (defrule ValidarEstudianteGustaProgramar
 
+    ; Estamos en el modulo de Sergio
+    (ModuloConversacion (modulo sergio))
+
     ; Las comprobaciones de seguridad tienen prioridad 7000
     (declare (salience 7000))
 
@@ -311,6 +347,9 @@
 )
 
 (defrule RepiteConversacionGustaProgramar
+
+    ; Estamos en el modulo de Sergio
+    (ModuloConversacion (modulo sergio))
 
     ; Asigno la misma prioridad que la prioridad de la pregunta que estamos corrigiendo
     (declare (salience -5))

@@ -10,6 +10,10 @@
 ; Si al estudiante le gusta mucho el hardware, entonces la mejor opcion que puede tomar es estudiar
 ; Arquitectura de computadores, por los motivos que explico en las reglas
 (defrule EstudianteGustaMuchoHardware
+
+    ; Estamos en el modulo de Sergio
+    (ModuloConversacion (modulo sergio))
+
     (declare (salience 8000))
 
     (EstudianteGustaHardware (cantidad mucho))
@@ -30,6 +34,9 @@
 ; Si al estudiante no le gusta nada el hardware, descartamos esta rama
 (defrule EstudianteGustaPocoHardware
 
+    ; Estamos en el modulo de Sergio
+    (ModuloConversacion (modulo sergio))
+
     (declare (salience 8000))
 
     (EstudianteGustaHardware (cantidad poco))
@@ -45,6 +52,10 @@
 ; es una rama muy fea / dificil. Por tanto, si el alumno esta dudoso sobre esta rama, tambien la
 ; descartamos
 (defrule EstudianteNoSabeSiGustaHardware
+
+    ; Estamos en el modulo de Sergio
+    (ModuloConversacion (modulo sergio))
+
     (declare (salience 8000))
 
     (EstudianteGustaHardware (cantidad nose))
@@ -68,6 +79,10 @@
 ; las que el sistema pueda razonar mas comodamente
 
 (defrule categorizaNotaMediaBaja
+
+    ; Estamos en el modulo de Sergio
+    (ModuloConversacion (modulo sergio))
+
     (declare (salience 8000))
 
     ; La nota media es baja
@@ -81,6 +96,10 @@
 )
 
 (defrule categorizaNotaMediaNormal
+
+    ; Estamos en el modulo de Sergio
+    (ModuloConversacion (modulo sergio))
+
     (declare (salience 8000))
 
     ; La nota media es normal
@@ -95,6 +114,10 @@
 
 
 (defrule categorizaNotaMediaAlta
+
+    ; Estamos en el modulo de Sergio
+    (ModuloConversacion (modulo sergio))
+
     (declare (salience 8000))
 
     ; La nota media es media alta
@@ -109,6 +132,9 @@
 
 
 (defrule categorizaNotaMediaMuyAlta
+
+    ; Estamos en el modulo de Sergio
+    (ModuloConversacion (modulo sergio))
 
     (declare (salience 8000))
 
@@ -128,6 +154,10 @@
 ; En primer lugar, si la nota media es baja, descartamos CSI porque es una rama realmente
 ; complicada y que requiere de unas muy buenas bases durante la carrera
 (defrule notaBajaDescartaCSI
+
+    ; Estamos en el modulo de Sergio
+    (ModuloConversacion (modulo sergio))
+
     (declare (salience 8000))
 
     (NotaMediaCategorica (valor baja))
@@ -143,6 +173,10 @@
 ; son bastante especificas y requieren de cierta base. En Ingenieria del Software muchas de las
 ; asignaturas son sencillas, y ademas te van a ayudar a retomar las bases
 (defrule notaBajaAconsejaIngSoftware
+
+    ; Estamos en el modulo de Sergio
+    (ModuloConversacion (modulo sergio))
+
     (declare (salience 8000))
 
     (NotaMediaCategorica (valor baja))
@@ -161,7 +195,11 @@
 
 ; Con una nota media alta o muy alta, es aconsejable hacer cualquier rama porque en principio no
 ; deberia ser muy complicada para el estudiante
-(declare notaAltaOMuyAltaAyudaSiempre
+(defrule notaAltaOMuyAltaAyudaSiempre
+
+    ; Estamos en el modulo de Sergio
+    (ModuloConversacion (modulo sergio))
+
     (declare (salience 8000))
 
     ; La nota media es alta o muy alta
@@ -182,6 +220,10 @@
 
 ; Si le gustan las matematicas, y tiene buena nota (normal | alta | muyalta), entonces recomiendo CSI
 (defrule GustanMatematicasYBuenaNota
+
+    ; Estamos en el modulo de Sergio
+    (ModuloConversacion (modulo sergio))
+
     (declare (salience 8000))
 
     ; La nota media es buena, suficiente para cursar esta rama
@@ -208,6 +250,10 @@
 ; Podriamos recomendar CSI, pero le va a ser muy complicado superar estas asignaturas con una nota
 ; tan ajustada
 (defrule GustanMatematicasPeroNotaNormal
+
+    ; Estamos en el modulo de Sergio
+    (ModuloConversacion (modulo sergio))
+
     (declare (salience 8000))
 
     ; La nota media es baja o normal
@@ -237,6 +283,10 @@
 
 ; Si al estudiante no le gustan las matematicas, descartamos CSI porque tiene gran carga de matematicas
 (defrule NoGustanMatematicasDescartaCSI
+
+    ; Estamos en el modulo de Sergio
+    (ModuloConversacion (modulo sergio))
+
     (declare (salience 8000))
 
     (EstudianteGustaMatematicas (cantidad no))
@@ -253,6 +303,10 @@
 ; No lo hacemos en la misma regla que la anterior porque los mensajes de descarte van a ser ligeramente
 ; diferentes
 (defrule NoSabeSiGustanMatematicasDescartaCSI
+
+    ; Estamos en el modulo de Sergio
+    (ModuloConversacion (modulo sergio))
+
     (declare (salience 8000))
 
     (EstudianteGustaMatematicas (cantidad nose))
@@ -276,6 +330,10 @@
 ; Si al estudiante le gusta programar, no le gustan las matematicas y tiene nota normal, asignamos
 ; Ing. Software porque es la rama con mas programacion sin otros elementos
 (defrule GustaProgramarEntoncesSoftware
+
+    ; Estamos en el modulo de Sergio
+    (ModuloConversacion (modulo sergio))
+
     (declare (salience 8000))
 
     ; Le gusta programar, y no le gustan las matematicas
@@ -300,6 +358,10 @@
 ; recomiendo que haga alguna asignatura de informacion. En estas asignaturas hay menos carga de programacion
 ; como tal (aunque se usa muchas consultas SQL o no relacionales) y son asequibles
 (defrule NoGustaProgramarEntoncesInformacion
+
+    ; Estamos en el modulo de Sergio
+    (ModuloConversacion (modulo sergio))
+
     (declare (salience 8000))
 
     ; Le gusta programar, tiene nota media y no le gustan las matematicas
@@ -329,6 +391,10 @@
 ; programar para su futuro profesional. Desarrollo seria demasiado arriesgado porque no sabe si le
 ; gusta programar
 (defrule NoSabeSiGustaProgramarEntoncesInformacion
+
+    ; Estamos en el modulo de Sergio
+    (ModuloConversacion (modulo sergio))
+
     (declare (salience 8000))
 
     ; Le gusta programar, tiene nota media y no le gustan las matematicas
@@ -366,6 +432,10 @@
 ; de conocimiento sea modificada. Si al modificar la base de conocimiento no se contempla una
 ; combinacion, en vez de dejar al estudiante sin respuesta al menos damos una respuesta por defecto
 (defrule respuestaPorDefecto
+
+    ; Estamos en el modulo de Sergio
+    (ModuloConversacion (modulo sergio))
+
     ; La regla por defecto deberia ser lo ultimo en ejecutarse de todo el sistema
     (declare (salience -9999))
     (Terminado (estado no))
@@ -380,6 +450,4 @@
     ; Terminamos, porque ya hemos elegido una rama
     (assert (Terminado (estado si)))
     (assert (Decision (rama Ingenieria_del_Software)))
-
-
 )
