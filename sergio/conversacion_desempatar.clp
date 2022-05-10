@@ -16,6 +16,9 @@
 ; Empezamos mostrando que estamos en una situacion de empate
 (defrule mostrarQueEstamosEnUnEmpate
 
+    ; Estamos en el modulo de Sergio
+    (ModuloConversacion (modulo sergio))
+
     (declare (salience -1))
 
     ; No se ha terminado y estamos en un empate
@@ -39,6 +42,9 @@
 ; Esta conversacion solo se da cuando no le gustan ni las matematicas ni programar
 (defrule conversacionDesempateNoGustaNiProgramarNiMatematicasPreguntaBaseDatos
 
+    ; Estamos en el modulo de Sergio
+    (ModuloConversacion (modulo sergio))
+
     (declare (salience -2))
 
     ; No se ha terminado y estamos en un empate
@@ -60,6 +66,9 @@
 )
 
 (defrule ValidarEstudianteGustaBasesDatos
+
+    ; Estamos en el modulo de Sergio
+    (ModuloConversacion (modulo sergio))
 
     ; Las comprobaciones de seguridad tienen prioridad 7000
     (declare (salience 7000))
@@ -83,6 +92,9 @@
 )
 
 (defrule RepiteConversacionGustaBasesDatos
+
+    ; Estamos en el modulo de Sergio
+    (ModuloConversacion (modulo sergio))
 
     ; Asigno la misma prioridad que la prioridad de la pregunta que estamos corrigiendo
     (declare (salience -2))
@@ -123,6 +135,9 @@
 ; Esta conversacion solo se da cuando no le gustan ni las matematicas ni programar
 (defrule conversacionDesempateGustaLinux
 
+    ; Estamos en el modulo de Sergio
+    (ModuloConversacion (modulo sergio))
+
     (declare (salience -3))
 
     ; No se ha terminado y estamos en un empate
@@ -143,6 +158,9 @@
 )
 
 (defrule ValidarEstudianteGustaLinux
+
+    ; Estamos en el modulo de Sergio
+    (ModuloConversacion (modulo sergio))
 
     ; Las comprobaciones de seguridad tienen prioridad 7000
     (declare (salience 7000))
@@ -165,6 +183,9 @@
 )
 
 (defrule RepiteConversacionGustaLinux
+
+    ; Estamos en el modulo de Sergio
+    (ModuloConversacion (modulo sergio))
 
     ; Asigno la misma prioridad que la prioridad de la pregunta que estamos corrigiendo
     (declare (salience -4))

@@ -9,6 +9,9 @@
 ; almacenada en el sistema
 (defrule checkConsejoTieneRamaValida
 
+    ; Estamos en el modulo de Sergio
+    (ModuloConversacion (modulo sergio))
+
     ; Las reglas que comprueban la validez del estado del sistema siempre tienen esta prioridad
     (declare (salience 7000))
 

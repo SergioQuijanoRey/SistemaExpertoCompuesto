@@ -12,6 +12,10 @@
 ; Muchas reglas hacen una asercion para Terminado si. Dichas reglas deberian retirar tambien la
 ; regla Terminado no, pero añado una regla para esto para asegurar la validez del programa
 (defrule terminadoSiNoIncompatibles
+
+    ; Estamos en el modulo de Sergio
+    (ModuloConversacion (modulo sergio))
+
     ; Esta regla retira hechos para mantener la validez del programa, y por tanto, entra en la
     ; categoria de prioridades 1. (consultar la documentacion en main.clp en la que indico esta
     ; jerarquia de prioridades)
@@ -31,6 +35,9 @@
 
 ; No podemos tener al mismo tiempo un hecho Terminado si y un hecho Terminado no
 (defrule checkTerminadoEstadoValido
+
+    ; Estamos en el modulo de Sergio
+    (ModuloConversacion (modulo sergio))
 
     ; Las comprobaciones de seguridad tienen este valor de prioridad
     (declare (salience 7000))

@@ -4,6 +4,9 @@
 ; Marcamos una regla para mostrar todos los motivos por los que recomendamos cierta rama
 (defrule mostrarResultadoFinal
 
+    ; Estamos en el modulo de Sergio
+    (ModuloConversacion (modulo sergio))
+
     ; Si ocurre el caso de que descartamos una rama, y tomamos la decision por otra rama, queremos
     ; mostrar ambos hechos, porque aportan al usuario mas informacion sobre la decision tomada, somos
     ; mas informativos. Creo que el orden logico es mostrar primero por que se descarta cierta rama
@@ -41,6 +44,10 @@
 ; por reglas del tipo
 ;   (Consejo rama orden texto)
 (defrule mostrarMotivos
+
+    ; Estamos en el modulo de Sergio
+    (ModuloConversacion (modulo sergio))
+
     (MostrarMotivos ?rama)
 
     ?consejo <- (Consejo ?rama ?texto)
@@ -64,6 +71,9 @@
 ; los mensajes
 (defrule algunDescartePonerFIFO
 
+    ; Estamos en el modulo de Sergio
+    (ModuloConversacion (modulo sergio))
+
     ; La regla añade un hecho basico del programa (en realidad realiza una modificacion, pero seria
     ; como añadir un flag FIFO y en base a ello modificar el comportamiento del programa)
     (declare (salience 8000))
@@ -81,6 +91,10 @@
 ; Mostramos un mensaje algo distinto la primera vez que en el restro de veces
 ; En el primer mensaje mostramos la rama que descartamos
 (defrule MostrarPrimerDescarte
+
+    ; Estamos en el modulo de Sergio
+    (ModuloConversacion (modulo sergio))
+
     (declare (salience -1))
 
     ; Tomamos el primer descarte
@@ -103,6 +117,10 @@
 ; Mostramos los motivos por los que se descarta una rama
 ; El primer mensaje ya se ha mostrado, asi que ahora solo hacemos print en modo lista
 (defrule mostrarListaDeDescarte
+
+    ; Estamos en el modulo de Sergio
+    (ModuloConversacion (modulo sergio))
+
     (declare (salience -2))
     ?hecho <- (Descartar ?rama ?orden ?texto)
 
