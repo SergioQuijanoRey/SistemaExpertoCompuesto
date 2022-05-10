@@ -32,6 +32,9 @@
 ; Ficheros de Luis Rodriguez Domingo
 (load luis.clp)
 
+; Ficheros comunes que hemos añadido en esta practica
+(load common/modulos.clp)
+
 ; Ejecutamos el codigo
 (reset)
 (run)
