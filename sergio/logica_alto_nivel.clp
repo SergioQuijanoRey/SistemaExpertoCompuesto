@@ -453,9 +453,6 @@
     ; La regla por defecto deberia ser lo ultimo en ejecutarse de todo el sistema
     (declare (salience -9999))
 
-
-    (declare (salience 8000))
-
     ; Estamos en el modulo de Sergio
     (ModuloConversacion (modulo sergio))
 

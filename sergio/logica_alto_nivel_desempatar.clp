@@ -147,9 +147,6 @@
 
     (declare (salience 8000))
 
-
-    (declare (salience 8000))
-
     ; Estamos en el modulo de Sergio
     (ModuloConversacion (modulo sergio))
 

@@ -73,8 +73,6 @@
 ; los mensajes
 (defrule algunDescartePonerFIFO
 
-
-
     (declare (salience -1))
 
     ; Estamos en el modulo de Sergio
@@ -97,11 +95,8 @@
 (defrule MostrarPrimerDescarte
 
 
-
     (declare (salience -2))
 
-    ; muestran los descartes
-    (declare (salience -4))
 
     ; Estamos en el modulo de Sergio
     (ModuloConversacion (modulo sergio))
@@ -126,8 +121,6 @@
 ; Mostramos los motivos por los que se descarta una rama
 ; El primer mensaje ya se ha mostrado, asi que ahora solo hacemos print en modo lista
 (defrule mostrarListaDeDescarte
-
-
 
     ; Estamos en el modulo de Sergio
     (ModuloConversacion (modulo sergio))
