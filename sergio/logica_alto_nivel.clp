@@ -209,7 +209,11 @@
     (ModuloConversacion (modulo sergio))
 
     ; La nota media es alta o muy alta
-    (NotamediaCategorica (valor alta | muyalta))
+    (NotaMediaCategorica (valor ?notamedia))
+    (test(or
+        (eq ?notamedia alta)
+        (eq ?notamedia muyalta)
+    ))
 
     ; Para cualquier rama sirve el siguiente consejo
     (Rama ?rama)
@@ -217,8 +221,7 @@
     =>
 
     ; Añadimos este consejo, que sirve para cualquiera de las ramas que al final decidamos
-    ; TODO -- por algun motivo ahora este assert me produce un error en la regla :|
-    (assert (Consejo ?rama "Con esa nota media tan buena, seguramente te sea muy facil superar esta rama"))
+    (assert (Consejo ?rama "Con esa nota media tan buena, seguramente te sea muy facil superar esta rama" ))
 )
 
 
