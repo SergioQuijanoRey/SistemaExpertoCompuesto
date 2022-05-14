@@ -4,16 +4,17 @@
 ; Marcamos una regla para mostrar todos los motivos por los que recomendamos cierta rama
 (defrule mostrarResultadoFinal
 
-    ; Estamos en el modulo de Sergio
-    (ModuloConversacion (modulo sergio))
-
     ; Si ocurre el caso de que descartamos una rama, y tomamos la decision por otra rama, queremos
     ; mostrar ambos hechos, porque aportan al usuario mas informacion sobre la decision tomada, somos
     ; mas informativos. Creo que el orden logico es mostrar primero por que se descarta cierta rama
     ; y mas tarde mostrar los motivos por los que tomamos la decision final, una vez que ya se han
     ; ido descartando ciertas decisiones. Por tanto, ponemos menos prioridad que las reglas que
-    ; muestran los descartes
-    (declare (salience -4))
+    ; como añadir un flag FIFO y en base a ello modificar el comportamiento del programa)
+    (declare (salience 8000))
+
+    ; Estamos en el modulo de Sergio
+    (ModuloConversacion (modulo sergio))
+
 
     (Terminado (estado si))
     (Decision (rama ?rama))
@@ -45,6 +46,7 @@
 ;   (Consejo rama orden texto)
 (defrule mostrarMotivos
 
+
     ; Estamos en el modulo de Sergio
     (ModuloConversacion (modulo sergio))
 
@@ -71,12 +73,12 @@
 ; los mensajes
 (defrule algunDescartePonerFIFO
 
+    (declare (salience -1))
+
     ; Estamos en el modulo de Sergio
     (ModuloConversacion (modulo sergio))
 
     ; La regla añade un hecho basico del programa (en realidad realiza una modificacion, pero seria
-    ; como añadir un flag FIFO y en base a ello modificar el comportamiento del programa)
-    (declare (salience 8000))
 
     ; Existe alguna regla de descarte, asi que es necesario que activemos ya el modo FIFO
     (Descartar ?rama ?orden ?texto)
@@ -92,10 +94,12 @@
 ; En el primer mensaje mostramos la rama que descartamos
 (defrule MostrarPrimerDescarte
 
+
+    (declare (salience -2))
+
+
     ; Estamos en el modulo de Sergio
     (ModuloConversacion (modulo sergio))
-
-    (declare (salience -1))
 
     ; Tomamos el primer descarte
     ?hecho <- (Descartar ?rama ?orden ?texto)
@@ -120,8 +124,6 @@
 
     ; Estamos en el modulo de Sergio
     (ModuloConversacion (modulo sergio))
-
-    (declare (salience -2))
     ?hecho <- (Descartar ?rama ?orden ?texto)
 
 

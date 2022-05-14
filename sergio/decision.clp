@@ -9,13 +9,15 @@
 ; para mostrar la decision final y dejar de preguntar
 (defrule decisionTomadaEntoncesTerminado
 
+
+    ; Las comprobaciones de seguridad tienen este valor de prioridad
+    (declare (salience 7000))
+
     ; Estamos en el modulo de Sergio
     (ModuloConversacion (modulo sergio))
 
     ; Esta regla retira hechos para mantener la validez del programa, y por tanto, entra en la
     ; categoria de prioridades 1. (consultar la documentacion en main.clp en la que indico esta
-    ; jerarquia de prioridades)
-    (declare (salience 9000))
 
     (Decision (rama ?rama))
     ?hecho <- (Terminado (estado no))
@@ -34,11 +36,13 @@
 ; No podemos tener al mismo tiempo un hecho (Decision ?rama) y (Terminado (estado no))
 (defrule checkDecisionTomadaEntoncesTerminado
 
+
+    ; jerarquia de prioridades)
+    (declare (salience 9000))
+
     ; Estamos en el modulo de Sergio
     (ModuloConversacion (modulo sergio))
 
-    ; Las comprobaciones de seguridad tienen este valor de prioridad
-    (declare (salience 7000))
 
     ; Tenemos una decision ya tomada
     (Decision (rama ?rama))
