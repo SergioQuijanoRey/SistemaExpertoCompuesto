@@ -60,6 +60,28 @@
     (retract ?consejo)
 )
 
+; Cuando hayamos mostrado todos los motivos por lo que aconsejamos un rama, tenemos que indicar al
+; sistema que pase al siguiente modulo
+(defrule motivosMostradosPasaASiguienteModulo
+
+    ; Estamos en el modulo de Sergio
+    (ModuloConversacion (modulo sergio))
+
+    ; Previamente se ha marcado que se tienen que mostrar los motivos
+    ; Esto significa que se ha tomado una decision y que se esta mostrando
+    (MostrarMotivos ?rama)
+
+    ; No quedan mas motivos para mostrar sobre esta rama
+    ; Esto significa que ya hemos terminado de mostrar todo lo que teniamos que mostrar y que podemos
+    ; pasar el relevo a otro modulo
+    (not (Consejo ?rama ?texto))
+
+    =>
+
+    ; Marcamos que queremos pasar al siguiente modulo
+    (assert (QuieroSiguienteModulo si))
+)
+
 
 ; Mostramos el motivo por el que descartamos ciertas asignaturas
 ; Esto lo hacemos durante la conversacion, porque creo que asi la interaccion con el usuario es mas
