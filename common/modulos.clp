@@ -23,13 +23,3 @@
 
 )
 
-; Definimos los hechos inciales relacionados con los modulos
-; Principalmente, el orden de los modulos y el modulo inicial
-(deffacts EstadoInicialModulos
-    ; Modulo inicial con el que iniciamos la conversacion
-    (ModuloConversacion (modulo sergio))
-
-    ; Orden de los modulos
-    (SiguienteModulo (modulo sergio) (siguientemodulo carlos))
-    (SiguienteModulo (modulo carlos) (siguientemodulo luis))
-)
