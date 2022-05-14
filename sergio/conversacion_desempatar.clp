@@ -190,9 +190,6 @@
     ; Asigno la misma prioridad que la prioridad de la pregunta que estamos corrigiendo
     (declare (salience -4))
 
-
-    (declare (salience -1))
-
     ; Estamos en el modulo de Sergio
     (ModuloConversacion (modulo sergio))
 
