@@ -40,8 +40,14 @@
     (retract ?moduloprevio)
     (assert (ModuloConversacion (modulo ?modsiguiente)))
 
-    ; Retiramos el hecho para saltar a otro modulo, porque en otro caso
+    ; Retiramos el hecho para saltar a otro modulo, porque en otro caso pasariamos al ultimo modulo
+    ; del sistema
     (retract ?quieroprevio)
+
+    ; Mostramos un mensaje informativo por pantalla
+    (printout t "" crlf)
+    (printout t "-- Pasamos del modulo de " ?modprevio " al modulo de " ?modsiguiente crlf)
+    (printout t "" crlf)
 
 )
 
