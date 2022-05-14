@@ -5,9 +5,10 @@
 ; Principalmente, el orden de los modulos y el modulo inicial
 (deffacts EstadoInicialModulos
     ; Modulo inicial con el que iniciamos la conversacion
-    (ModuloConversacion (modulo sergio))
+    (ModuloConversacion (modulo inicial))
 
     ; Orden de los modulos
+    (SiguienteModulo (modulo inicial) (siguientemodulo sergio))
     (SiguienteModulo (modulo sergio) (siguientemodulo carlos))
     (SiguienteModulo (modulo carlos) (siguientemodulo luis))
 )
