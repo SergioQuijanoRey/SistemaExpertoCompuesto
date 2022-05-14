@@ -1,4 +1,4 @@
-;;; 
+;;;
 (deffacts Ramas
 	(Rama Computacion_y_Sistemas_Inteligentes)
 	(Rama Ingenieria_del_Software)
@@ -52,6 +52,10 @@
 )
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (defrule RazonPorDefecto
+
+    ; Comprobamos que estamos en el modulo de luis
+    (ModuloConversacion (modulo luis))
+
    (declare (salience 1))
    (modulo inicio)
    (Rama ?r)
@@ -61,15 +65,23 @@
 )
 
 (defrule Comenzar_preguntas
+
+    ; Comprobamos que estamos en el modulo de luis
+    (ModuloConversacion (modulo luiso))
+
    ?f <- (modulo inicio)
    =>
    (retract ?f)
    (assert (modulo preguntas))
 )
 
-;;;;;;; Preguntas 
+;;;;;;; Preguntas
 
 (defrule PreguntaWeb
+
+    ; Comprobamos que estamos en el modulo de luis
+    (ModuloConversacion (modulo luiso))
+
    (declare (salience 1))
    (modulo preguntas)
    =>
@@ -78,6 +90,10 @@
 )
 
 (defrule PreguntaProgramar
+
+    ; Comprobamos que estamos en el modulo de luis
+    (ModuloConversacion (modulo luiso))
+
    (declare (salience 1))
    (modulo preguntas)
    =>
@@ -86,6 +102,10 @@
 )
 
 (defrule PreguntaAdSi
+
+    ; Comprobamos que estamos en el modulo de luis
+    (ModuloConversacion (modulo luiso))
+
    (declare (salience 1))
    (modulo preguntas)
    =>
@@ -94,6 +114,10 @@
 )
 
 (defrule PreguntaRed
+
+    ; Comprobamos que estamos en el modulo de luis
+    (ModuloConversacion (modulo luiso))
+
    (declare (salience 1))
    (modulo preguntas)
    =>
@@ -102,6 +126,10 @@
 )
 
 (defrule PreguntaMates
+
+    ; Comprobamos que estamos en el modulo de luis
+    (ModuloConversacion (modulo luiso))
+
    (declare (salience 1))
    (modulo preguntas)
    =>
@@ -110,6 +138,10 @@
 )
 
 (defrule PreguntaDocencia
+
+    ; Comprobamos que estamos en el modulo de luis
+    (ModuloConversacion (modulo luiso))
+
    (declare (salience 1))
    (modulo preguntas)
    =>
@@ -118,6 +150,10 @@
 )
 
 (defrule PreguntaRobotica
+
+    ; Comprobamos que estamos en el modulo de luis
+    (ModuloConversacion (modulo luiso))
+
    (declare (salience 1))
    (modulo preguntas)
    =>
@@ -126,6 +162,10 @@
 )
 
 (defrule PreguntaBD
+
+    ; Comprobamos que estamos en el modulo de luis
+    (ModuloConversacion (modulo luiso))
+
    (declare (salience 1))
    (modulo preguntas)
    =>
@@ -134,6 +174,10 @@
 )
 
 (defrule PreguntaHardware
+
+    ; Comprobamos que estamos en el modulo de luis
+    (ModuloConversacion (modulo luiso))
+
    (declare (salience 1))
    (modulo preguntas)
    =>
@@ -142,6 +186,10 @@
 )
 
 (defrule PreguntaVideojuegos
+
+    ; Comprobamos que estamos en el modulo de luis
+    (ModuloConversacion (modulo luiso))
+
    (declare (salience 1))
    ?m <- (modulo preguntas)
    =>
@@ -155,6 +203,10 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (defrule RazonarGusto
+
+    ; Comprobamos que estamos en el modulo de luis
+    (ModuloConversacion (modulo luiso))
+
    (declare (salience 1))
    (modulo razonamiento)
    (gusta ?r ?n)
@@ -164,6 +216,10 @@
 )
 
 (defrule FinRazonamiento
+
+    ; Comprobamos que estamos en el modulo de luis
+    (ModuloConversacion (modulo luiso))
+
    ?m <- (modulo razonamiento)
    =>
    (retract ?m)
@@ -172,6 +228,10 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (defrule RazonarConsejo
+
+    ; Comprobamos que estamos en el modulo de luis
+    (ModuloConversacion (modulo luiso))
+
    (declare (salience 1))
    (modulo explicacion)
    (gustaRama ?r ?R no)
@@ -182,6 +242,10 @@
 )
 
 (defrule RazonarConsejoSi
+
+    ; Comprobamos que estamos en el modulo de luis
+    (ModuloConversacion (modulo luiso))
+
    (declare (salience 1))
    (modulo explicacion)
    (gustaRama ?r ?R si)
@@ -193,6 +257,10 @@
 )
 
 (defrule FinConsejos
+
+    ; Comprobamos que estamos en el modulo de luis
+    (ModuloConversacion (modulo luiso))
+
    ?m <- (modulo explicacion)
    =>
    (retract ?m)
@@ -201,6 +269,10 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (defrule MotivosConsejoPorDefecto
+
+    ; Comprobamos que estamos en el modulo de luis
+    (ModuloConversacion (modulo luiso))
+
    (declare (salience 2))
    (modulo motivos)
    (explicacion ?R porDefecto)
@@ -214,6 +286,10 @@
 )
 
 (defrule MotivosConsejo
+
+    ; Comprobamos que estamos en el modulo de luis
+    (ModuloConversacion (modulo luiso))
+
    (declare (salience 1))
    ?g <- (gustaRama ?r ?R si)
    (explicacion ?R si)
@@ -226,6 +302,10 @@
 )
 
 (defrule Fin_motivos
+
+    ; Comprobamos que estamos en el modulo de luis
+    (ModuloConversacion (modulo luiso))
+
    ?f <- (modulo motivos)
    =>
    (assert (modulo explicacion))
@@ -234,6 +314,10 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (defrule ExplRazonada
+
+    ; Comprobamos que estamos en el modulo de luis
+    (ModuloConversacion (modulo luiso))
+
   (modulo explicacion)
   (explicacion ?R ?n)
   (test (or (eq ?n si) (eq ?n porDefecto)))
