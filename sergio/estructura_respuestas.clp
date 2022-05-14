@@ -52,12 +52,14 @@
 ; mantener la validez del sistema
 (defrule flagASiBorraFlagANo
 
+
+    ; Las reglas que comprueban la validez del estado del sistema siempre tienen esta prioridad
+    (declare (salience 7000))
+
     ; Estamos en el modulo de Sergio
     (ModuloConversacion (modulo sergio))
 
     ; Esta regla elimina un hecho para mantener la validez del sistema, asi que su prioridad
-    ; debe ser 9000 (consultar main.clp para ver la jerarquia de prioridades que uso)
-    (declare (salience 9000))
 
     ; Dos hechos contradictorios. Me quedo con el flag si
     (EmpateInformacion (flag si))
@@ -74,11 +76,13 @@
 ; No puede ser que tengamos el flag a si y no a la vez
 (defrule checkEmpateInformacionEstadoValido
 
+
+    ; debe ser 9000 (consultar main.clp para ver la jerarquia de prioridades que uso)
+    (declare (salience 9000))
+
     ; Estamos en el modulo de Sergio
     (ModuloConversacion (modulo sergio))
 
-    ; Las reglas que comprueban la validez del estado del sistema siempre tienen esta prioridad
-    (declare (salience 7000))
 
     ; Tenemos el flag en dos valores contradictorios:wq
     (EmpateInformacion (flag si))

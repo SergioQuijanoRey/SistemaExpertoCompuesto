@@ -11,10 +11,10 @@
 ; Arquitectura de computadores, por los motivos que explico en las reglas
 (defrule EstudianteGustaMuchoHardware
 
+    (declare (salience 8000))
+
     ; Estamos en el modulo de Sergio
     (ModuloConversacion (modulo sergio))
-
-    (declare (salience 8000))
 
     (EstudianteGustaHardware (cantidad mucho))
 
@@ -34,10 +34,9 @@
 ; Si al estudiante no le gusta nada el hardware, descartamos esta rama
 (defrule EstudianteGustaPocoHardware
 
+
     ; Estamos en el modulo de Sergio
     (ModuloConversacion (modulo sergio))
-
-    (declare (salience 8000))
 
     (EstudianteGustaHardware (cantidad poco))
 
@@ -53,10 +52,11 @@
 ; descartamos
 (defrule EstudianteNoSabeSiGustaHardware
 
-    ; Estamos en el modulo de Sergio
-    (ModuloConversacion (modulo sergio))
 
     (declare (salience 8000))
+
+    ; Estamos en el modulo de Sergio
+    (ModuloConversacion (modulo sergio))
 
     (EstudianteGustaHardware (cantidad nose))
 
@@ -80,10 +80,11 @@
 
 (defrule categorizaNotaMediaBaja
 
-    ; Estamos en el modulo de Sergio
-    (ModuloConversacion (modulo sergio))
 
     (declare (salience 8000))
+
+    ; Estamos en el modulo de Sergio
+    (ModuloConversacion (modulo sergio))
 
     ; La nota media es baja
     (NotaMediaEstudiante (numero ?nota))
@@ -97,10 +98,11 @@
 
 (defrule categorizaNotaMediaNormal
 
-    ; Estamos en el modulo de Sergio
-    (ModuloConversacion (modulo sergio))
 
     (declare (salience 8000))
+
+    ; Estamos en el modulo de Sergio
+    (ModuloConversacion (modulo sergio))
 
     ; La nota media es normal
     (NotaMediaEstudiante (numero ?nota))
@@ -115,10 +117,11 @@
 
 (defrule categorizaNotaMediaAlta
 
-    ; Estamos en el modulo de Sergio
-    (ModuloConversacion (modulo sergio))
 
     (declare (salience 8000))
+
+    ; Estamos en el modulo de Sergio
+    (ModuloConversacion (modulo sergio))
 
     ; La nota media es media alta
     (NotaMediaEstudiante (numero ?nota))
@@ -133,10 +136,11 @@
 
 (defrule categorizaNotaMediaMuyAlta
 
-    ; Estamos en el modulo de Sergio
-    (ModuloConversacion (modulo sergio))
 
     (declare (salience 8000))
+
+    ; Estamos en el modulo de Sergio
+    (ModuloConversacion (modulo sergio))
 
     ; La nota media es muy alta
     (NotaMediaEstudiante (numero ?nota))
@@ -155,10 +159,11 @@
 ; complicada y que requiere de unas muy buenas bases durante la carrera
 (defrule notaBajaDescartaCSI
 
-    ; Estamos en el modulo de Sergio
-    (ModuloConversacion (modulo sergio))
 
     (declare (salience 8000))
+
+    ; Estamos en el modulo de Sergio
+    (ModuloConversacion (modulo sergio))
 
     (NotaMediaCategorica (valor baja))
 
@@ -174,10 +179,11 @@
 ; asignaturas son sencillas, y ademas te van a ayudar a retomar las bases
 (defrule notaBajaAconsejaIngSoftware
 
-    ; Estamos en el modulo de Sergio
-    (ModuloConversacion (modulo sergio))
 
     (declare (salience 8000))
+
+    ; Estamos en el modulo de Sergio
+    (ModuloConversacion (modulo sergio))
 
     (NotaMediaCategorica (valor baja))
 
@@ -197,10 +203,11 @@
 ; deberia ser muy complicada para el estudiante
 (defrule notaAltaOMuyAltaAyudaSiempre
 
-    ; Estamos en el modulo de Sergio
-    (ModuloConversacion (modulo sergio))
 
     (declare (salience 8000))
+
+    ; Estamos en el modulo de Sergio
+    (ModuloConversacion (modulo sergio))
 
     ; La nota media es alta o muy alta
     (NotamediaCategorica (valor alta | muyalta))
@@ -221,10 +228,11 @@
 ; Si le gustan las matematicas, y tiene buena nota (normal | alta | muyalta), entonces recomiendo CSI
 (defrule GustanMatematicasYBuenaNota
 
-    ; Estamos en el modulo de Sergio
-    (ModuloConversacion (modulo sergio))
 
     (declare (salience 8000))
+
+    ; Estamos en el modulo de Sergio
+    (ModuloConversacion (modulo sergio))
 
     ; La nota media es buena, suficiente para cursar esta rama
     (NotaMediaCategorica (valor alta | muyalta))
@@ -251,10 +259,11 @@
 ; tan ajustada
 (defrule GustanMatematicasPeroNotaNormal
 
-    ; Estamos en el modulo de Sergio
-    (ModuloConversacion (modulo sergio))
 
     (declare (salience 8000))
+
+    ; Estamos en el modulo de Sergio
+    (ModuloConversacion (modulo sergio))
 
     ; La nota media es baja o normal
     ; Notar que si la nota media es baja, anteriormente ya hemos recomendado Ing. Software. Dejamos
@@ -284,10 +293,11 @@
 ; Si al estudiante no le gustan las matematicas, descartamos CSI porque tiene gran carga de matematicas
 (defrule NoGustanMatematicasDescartaCSI
 
-    ; Estamos en el modulo de Sergio
-    (ModuloConversacion (modulo sergio))
 
     (declare (salience 8000))
+
+    ; Estamos en el modulo de Sergio
+    (ModuloConversacion (modulo sergio))
 
     (EstudianteGustaMatematicas (cantidad no))
 
@@ -304,10 +314,11 @@
 ; diferentes
 (defrule NoSabeSiGustanMatematicasDescartaCSI
 
-    ; Estamos en el modulo de Sergio
-    (ModuloConversacion (modulo sergio))
 
     (declare (salience 8000))
+
+    ; Estamos en el modulo de Sergio
+    (ModuloConversacion (modulo sergio))
 
     (EstudianteGustaMatematicas (cantidad nose))
 
@@ -331,10 +342,11 @@
 ; Ing. Software porque es la rama con mas programacion sin otros elementos
 (defrule GustaProgramarEntoncesSoftware
 
-    ; Estamos en el modulo de Sergio
-    (ModuloConversacion (modulo sergio))
 
     (declare (salience 8000))
+
+    ; Estamos en el modulo de Sergio
+    (ModuloConversacion (modulo sergio))
 
     ; Le gusta programar, y no le gustan las matematicas
     (EstudianteGustaProgramar (cantidad si))
@@ -359,10 +371,11 @@
 ; como tal (aunque se usa muchas consultas SQL o no relacionales) y son asequibles
 (defrule NoGustaProgramarEntoncesInformacion
 
-    ; Estamos en el modulo de Sergio
-    (ModuloConversacion (modulo sergio))
 
     (declare (salience 8000))
+
+    ; Estamos en el modulo de Sergio
+    (ModuloConversacion (modulo sergio))
 
     ; Le gusta programar, tiene nota media y no le gustan las matematicas
     (EstudianteGustaProgramar (cantidad no))
@@ -392,10 +405,11 @@
 ; gusta programar
 (defrule NoSabeSiGustaProgramarEntoncesInformacion
 
-    ; Estamos en el modulo de Sergio
-    (ModuloConversacion (modulo sergio))
 
     (declare (salience 8000))
+
+    ; Estamos en el modulo de Sergio
+    (ModuloConversacion (modulo sergio))
 
     ; Le gusta programar, tiene nota media y no le gustan las matematicas
     (EstudianteGustaProgramar (cantidad nose))
@@ -433,11 +447,15 @@
 ; combinacion, en vez de dejar al estudiante sin respuesta al menos damos una respuesta por defecto
 (defrule respuestaPorDefecto
 
+    ; La regla por defecto deberia ser lo ultimo en ejecutarse de todo el sistema
+    (declare (salience -9999))
+
+
+    (declare (salience 8000))
+
     ; Estamos en el modulo de Sergio
     (ModuloConversacion (modulo sergio))
 
-    ; La regla por defecto deberia ser lo ultimo en ejecutarse de todo el sistema
-    (declare (salience -9999))
     (Terminado (estado no))
 
     =>

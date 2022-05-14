@@ -18,10 +18,10 @@
 ; principalmente Inteligencia de Negocio). Asi que por esa asignatura, aconsejo esa rama
 (defrule EmpateGustaMatesEntoncesSistemas
 
+    (declare (salience 8000))
+
     ; Estamos en el modulo de Sergio
     (ModuloConversacion (modulo sergio))
-
-    (declare (salience 8000))
 
     ; Nos encontramos en una situacion de empate
     (EmpateInformacion (flag si))
@@ -47,10 +47,9 @@
 ; Si la nota media es muy alta, entonces recomendamos Sistemas, que es en mi opinion algo mas compleja
 (defrule EmpateNotaMuyAltaEntoncesSistemas
 
+
     ; Estamos en el modulo de Sergio
     (ModuloConversacion (modulo sergio))
-
-    (declare (salience 8000))
 
     ; Nos encontramos en una situacion de empate
     (EmpateInformacion (flag si))
@@ -80,10 +79,11 @@
 ; un par de asignaturas de administracion de bases de datos
 (defrule gustaBasesDeDatosEntoncesSistemas
 
-    ; Estamos en el modulo de Sergio
-    (ModuloConversacion (modulo sergio))
 
     (declare (salience 8000))
+
+    ; Estamos en el modulo de Sergio
+    (ModuloConversacion (modulo sergio))
 
     ; Nos encontramos en una situacion de empate
     (EmpateInformacion (flag si))
@@ -111,10 +111,11 @@
 ; que se basan bastante en el manejo de linux
 (defrule gustaLinuxEntoncesTecnologias
 
-    ; Estamos en el modulo de Sergio
-    (ModuloConversacion (modulo sergio))
 
     (declare (salience 8000))
+
+    ; Estamos en el modulo de Sergio
+    (ModuloConversacion (modulo sergio))
 
     ; Nos encontramos en una situacion de empate
     (EmpateInformacion (flag si))
@@ -143,10 +144,14 @@
 ; bastante con linux
 (defrule NoGustaLinuxEntoncesSistemas
 
-    ; Estamos en el modulo de Sergio
-    (ModuloConversacion (modulo sergio))
 
     (declare (salience 8000))
+
+
+    (declare (salience 8000))
+
+    ; Estamos en el modulo de Sergio
+    (ModuloConversacion (modulo sergio))
 
     ; Nos encontramos en una situacion de empate
     (EmpateInformacion (flag si))
