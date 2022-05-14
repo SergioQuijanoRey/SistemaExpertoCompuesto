@@ -26,7 +26,7 @@
 ; Usamos esta regla para, si uno de los tres modulos marca que ha terminado, se pase al siguiente modulo
 (defrule marcadoSiguienteModuloCambiaModulo
     ; Algun modulo ha marcado que ha terminado y que tiene que pasar al siguiente
-    (QuieroSiguienteModulo si)
+    ?quieroprevio <- (QuieroSiguienteModulo si)
 
     ; Modulo previo para desmarcarlo
     ?moduloprevio <- (ModuloConversacion (modulo ?modprevio))
@@ -39,6 +39,9 @@
     ; Hacemos el cambio de modulo
     (retract ?moduloprevio)
     (assert (ModuloConversacion (modulo ?modsiguiente)))
+
+    ; Retiramos el hecho para saltar a otro modulo, porque en otro caso
+    (retract ?quieroprevio)
 
 )
 
