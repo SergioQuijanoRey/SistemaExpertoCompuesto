@@ -203,7 +203,6 @@
 ; deberia ser muy complicada para el estudiante
 (defrule notaAltaOMuyAltaAyudaSiempre
 
-
     (declare (salience 8000))
 
     ; Estamos en el modulo de Sergio
@@ -218,6 +217,7 @@
     =>
 
     ; Añadimos este consejo, que sirve para cualquiera de las ramas que al final decidamos
+    ; TODO -- por algun motivo ahora este assert me produce un error en la regla :|
     (assert (Consejo ?rama "Con esa nota media tan buena, seguramente te sea muy facil superar esta rama"))
 )
 
