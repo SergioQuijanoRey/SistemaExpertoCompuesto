@@ -2,7 +2,7 @@
 ;;;  				CARLOS LARA CASANOVA
 ;;; 				UGR-INGENIERÍA DEL CONOCIMIENTO
 ;;; 				2021-2022
-;;; 				SISTEMA EXPERTO SENCILLO 
+;;; 				SISTEMA EXPERTO SENCILLO
 ;;;
 
 ;;; Voy a utilizar las siguiente propiedades:
@@ -26,16 +26,16 @@
 ;; Cuando deje de ser recomendable una rama estará descartada
 ;; que lo guardo como (Descartada rama)
 
-;; Los temas principales que trata una rama se guardan como 
+;; Los temas principales que trata una rama se guardan como
 ;; (Imprescindible tema rama)
 ;; Son conocimiento por defecto.
 
 ;; Cuando un alumno muestre interés en lo que se da en una rama.
 ;; Si muestra sólo interés por algunos de los temas entonces mostrará
 ;; menor interés por dicha rama. Esto se representa mediante.
-;; 
+;;
 ;; (Interes rama) si muestra interés por todos sus temas
-;; 
+;;
 ;; (InteresParcial rama) si muestra interés por alguno de sus temas
 ;;
 ;; Para ver el interés que muestra hago uso de las respuestas a las preguntas
@@ -46,11 +46,11 @@
 ;;
 ;; (nombre_caracteristicas valor | nose rama)
 ;;
-;; Dónde valor puede ser Mucho | Poco ó Mucha | Poca dependiendo de la 
-;; característica 
+;; Dónde valor puede ser Mucho | Poco ó Mucha | Poca dependiendo de la
+;; característica
 ;;
 ;; Esto es conocimiento por defecto
-;; 
+;;
 ;; Esto se usará para comparar qué rama se adecúa más al alumno
 ;; cuando ha mostrado el mismo interés en distitas ramas.
 ;; Para saber sus gustos le pregunto y lo guardo en:
@@ -80,10 +80,10 @@
 
 
 ;;; Los siguientes hechos son campos imprescindibles para cada rama
-;;: Sino te gusta un campo asocidado a una rama entonces no se 
+;;: Sino te gusta un campo asocidado a una rama entonces no se
 ;;; va a recomnedar. De esta forma descarto recomendaciones tan
 ;;; absurdas como recomendar la rama de CSI a un alumno al que no
-;;; le interesa la IA. 
+;;; le interesa la IA.
 (deffacts Imprescindibles
 	(Imprescindible Ciencias_Computación Computacion_y_Sistemas_Inteligentes)
 	(Imprescindible IA Computacion_y_Sistemas_Inteligentes)
@@ -97,8 +97,8 @@
 )
 
 ;;;
-;;; Aqui guardo otro conocimiento relativo a las ramas que 
-;;; tiene que ver con cómo se imparten en general y no con 
+;;; Aqui guardo otro conocimiento relativo a las ramas que
+;;; tiene que ver con cómo se imparten en general y no con
 ;;; lo que se da en ellas
 ;;;
 (deffacts Caracteristicas
@@ -158,6 +158,9 @@
 
 ;;; Al inicio todas las ramas son recomendables porque no se nada de la persona
 (defrule iniciar_recomendables
+    ; Comprobamos que estamos en el modulo de carlos
+    (ModuloConversacion (modulo carlos))
+
 (declare (salience 9999))
 	(Rama ?x)
 =>
@@ -167,6 +170,9 @@
 
 ;;; Si una pregunta no tiene una respuesta válida debo de volver a preguntarla
 (defrule respuesta_invalida
+    ; Comprobamos que estamos en el modulo de carlos
+    (ModuloConversacion (modulo carlos))
+
 (declare (salience 9999))
 	?dir <- (pregunta ?x ?y)
 	(and 	(test (neq ?y si))
@@ -181,6 +187,9 @@
 
 ;;; Guardo la respuesta de la pregunta como conocimiento que pueda usar para razonar
 (defrule procesa_pregunta
+    ; Comprobamos que estamos en el modulo de carlos
+    (ModuloConversacion (modulo carlos))
+
 (declare (salience 9998))
 	?dir <- (pregunta ?x ?y)
 =>
@@ -194,10 +203,13 @@
 ;;;  para poder empezar a razonar por ahí y hacerle otras preguntas si fuera necesario
 ;;;
 ;;; La primera pregunta de cada rama será sobre el tema más importante de dicha rama, si no
-;;: le gusta dicho tema descarto dicha rama y no le preguntaré si le interesan los otros 
+;;: le gusta dicho tema descarto dicha rama y no le preguntaré si le interesan los otros
 ;;; temas que se dan en la rama.
 
 (defrule pregunta2
+    ; Comprobamos que estamos en el modulo de carlos
+    (ModuloConversacion (modulo carlos))
+
 (declare (salience 4999))
 	(Recomendable Computacion_y_Sistemas_Inteligentes)
 	(not (Opinion Ciencias_Computación ?))
@@ -209,6 +221,9 @@
 )
 
 (defrule pregunta1
+    ; Comprobamos que estamos en el modulo de carlos
+    (ModuloConversacion (modulo carlos))
+
 (declare (salience 5000))
 	(Recomendable Computacion_y_Sistemas_Inteligentes)
 	(not (Opinion IA ?))
@@ -220,6 +235,9 @@
 )
 
 (defrule pregunta4
+    ; Comprobamos que estamos en el modulo de carlos
+    (ModuloConversacion (modulo carlos))
+
 (declare (salience 4997))
 	(Recomendable Ingenieria_del_Software)
 	(not (Opinion Programacion ?))
@@ -231,6 +249,9 @@
 )
 
 (defrule pregunta3
+    ; Comprobamos que estamos en el modulo de carlos
+    (ModuloConversacion (modulo carlos))
+
 (declare (salience 4998))
 	(Recomendable Ingenieria_del_Software)
 	(not (Opinion Proyectos ?))
@@ -242,6 +263,9 @@
 )
 
 (defrule pregunta5
+    ; Comprobamos que estamos en el modulo de carlos
+    (ModuloConversacion (modulo carlos))
+
 (declare (salience 4996))
 	(Recomendable Ingenieria_de_Computadores)
 	(not (Opinion Hardware ?))
@@ -253,6 +277,9 @@
 )
 
 (defrule pregunta7
+    ; Comprobamos que estamos en el modulo de carlos
+    (ModuloConversacion (modulo carlos))
+
 (declare (salience 4994))
 	(Recomendable Sistemas_de_Informacion)
 	(not (Opinion Bases_de_Datos ?))
@@ -264,6 +291,9 @@
 )
 
 (defrule pregunta6
+    ; Comprobamos que estamos en el modulo de carlos
+    (ModuloConversacion (modulo carlos))
+
 (declare (salience 4995))
 	(Recomendable Sistemas_de_Informacion)
 	(not (Opinion Ciencia_de_Datos ?))
@@ -275,6 +305,9 @@
 )
 
 (defrule pregunta9
+    ; Comprobamos que estamos en el modulo de carlos
+    (ModuloConversacion (modulo carlos))
+
 (declare (salience 4992))
 	(Recomendable Tecnologias_de_la_Informacion)
 	(not (Opinion Seguridad ?))
@@ -286,6 +319,9 @@
 )
 
 (defrule pregunta8
+    ; Comprobamos que estamos en el modulo de carlos
+    (ModuloConversacion (modulo carlos))
+
 (declare (salience 4993))
 	(Recomendable Tecnologias_de_la_Informacion)
 	(not (Opinion Web ?))
@@ -300,6 +336,9 @@
 ;;; Ya le hice las preguntas principales
 ;;;
 (defrule para_preguntar
+    ; Comprobamos que estamos en el modulo de carlos
+    (ModuloConversacion (modulo carlos))
+
 (declare (salience 1000))
 	?dir <- (preguntar)
 =>
@@ -312,6 +351,9 @@
 ;;; uno de los campos imprescindibles que trata
 ;;;
 (defrule descartar_rama
+    ; Comprobamos que estamos en el modulo de carlos
+    (ModuloConversacion (modulo carlos))
+
 (declare (salience 9000))
 	(Imprescindible ?x ?rama)
 	(Opinion ?x no)
@@ -328,6 +370,9 @@
 ;;; Veo las ramas en las que muestra interés en sus campos principales
 ;;;
 (defrule interesa_rama
+    ; Comprobamos que estamos en el modulo de carlos
+    (ModuloConversacion (modulo carlos))
+
 (declare (salience 8999))
 	(Recomendable ?rama)
 	(not (Interes ?rama))
@@ -343,6 +388,9 @@
 ;;; SI la persona encuentra parte de los campos de la rama (los principales) interesantes pero
 ;;; alguno secundario no entonces le interesa parcialmente la rama
 (defrule interesa_rama_parcial
+    ; Comprobamos que estamos en el modulo de carlos
+    (ModuloConversacion (modulo carlos))
+
 (declare (salience 8998))
 	(Recomendable ?rama)
 	(not (InteresParcial ?rama))
@@ -358,8 +406,11 @@
 	(assert (InteresParcial ?rama))
 )
 
-;;; Si una rama ha sido descartada obviamente no tiene interés en dicha rama 
+;;; Si una rama ha sido descartada obviamente no tiene interés en dicha rama
 (defrule rama_descartada1
+    ; Comprobamos que estamos en el modulo de carlos
+    (ModuloConversacion (modulo carlos))
+
 (declare (salience 9999))
 	(Descartada ?rama)
 	?dir <- (Interes ?rama)
@@ -369,6 +420,9 @@
 
 ;;; Igualmente con interés parcial
 (defrule rama_descartada2
+    ; Comprobamos que estamos en el modulo de carlos
+    (ModuloConversacion (modulo carlos))
+
 (declare (salience 9999))
 	(Descartada ?rama)
 	?dir <- (InteresParcial ?rama)
@@ -379,6 +433,9 @@
 
 ;;; Si el alumno tiene interés parcial en una rama obviamente no tiene interés completo
 (defrule rama_interes_parcial
+    ; Comprobamos que estamos en el modulo de carlos
+    (ModuloConversacion (modulo carlos))
+
 (declare (salience 9998))
 	(InteresParcial ?rama)
 	?dir <- (Interes ?rama)
@@ -390,6 +447,9 @@
 ;;; Si el alumno muestra mayor interés en un rama que en otra descarto la otra
 ;;; Obviamente debo esperar a que acabar de preguntar para saberlo por completo
 (defrule prefiere_rama
+    ; Comprobamos que estamos en el modulo de carlos
+    (ModuloConversacion (modulo carlos))
+
 (declare (salience 9000))
 	(descartar)
 	(Interes ?rama)
@@ -401,6 +461,9 @@
 )
 
 (defrule prefiere_rama2
+    ; Comprobamos que estamos en el modulo de carlos
+    (ModuloConversacion (modulo carlos))
+
 (declare (salience 9000))
 	(descartar)
 	(InteresParcial ?rama)
@@ -414,11 +477,14 @@
 
 ;;;
 ;;; Ahora toca razonar. Buscaré cosas que puedan hacer que se decida por una rama u otra.
-;;; pensaré en cosas que hacen que pueda preferir una rama a otra sabiendo que ya mostró 
+;;; pensaré en cosas que hacen que pueda preferir una rama a otra sabiendo que ya mostró
 ;;; el mismo interés en lo que se imparte en ambas
 ;;;
 
 (defrule empieza_razonar
+    ; Comprobamos que estamos en el modulo de carlos
+    (ModuloConversacion (modulo carlos))
+
 (declare (salience 1))
 	?dir <-(descartar)
 =>
@@ -430,6 +496,9 @@
 ;;; por ninguna rama y le recomiendo la que considero más sencilla
 ;;; para acabar la carrera
 (defrule recomendar_rama_no_interes
+    ; Comprobamos que estamos en el modulo de carlos
+    (ModuloConversacion (modulo carlos))
+
 (declare (salience 9999))
 	?dir <- (razonar)
 	(not (Recomendable ?rama))
@@ -448,6 +517,9 @@ Honestamente no muestras nigún interés en lo que se imparte en ninguna rama as
 ;; Si la carga teoríca puede hacer que se decida le pregunto
 
 (defrule desempate_carga_teorica
+    ; Comprobamos que estamos en el modulo de carlos
+    (ModuloConversacion (modulo carlos))
+
 (declare (salience 5000))
 	(razonar)
 	(Recomendable ?rama)
@@ -462,6 +534,9 @@ Honestamente no muestras nigún interés en lo que se imparte en ninguna rama as
 )
 
 (defrule pregunta_carga_teorica
+    ; Comprobamos que estamos en el modulo de carlos
+    (ModuloConversacion (modulo carlos))
+
 (declare (salience 6000))
 	(preguntaCargaTeorica)
 =>
@@ -470,6 +545,9 @@ Honestamente no muestras nigún interés en lo que se imparte en ninguna rama as
 )
 
 (defrule repetir_pregunta_carga_teorica
+    ; Comprobamos que estamos en el modulo de carlos
+    (ModuloConversacion (modulo carlos))
+
 (declare (salience 9999))
 	?dir <- (CargaTeorica ?x usuario)
 	?dir2 <- (preguntaCargaTeorica)
@@ -488,6 +566,9 @@ Honestamente no muestras nigún interés en lo que se imparte en ninguna rama as
 ;; Igual con la carga práctica
 
 (defrule desempate_carga_practica
+    ; Comprobamos que estamos en el modulo de carlos
+    (ModuloConversacion (modulo carlos))
+
 (declare (salience 4999))
 	(razonar)
 	(Recomendable ?rama)
@@ -503,6 +584,9 @@ Honestamente no muestras nigún interés en lo que se imparte en ninguna rama as
 
 
 (defrule pregunta_carga_practica
+    ; Comprobamos que estamos en el modulo de carlos
+    (ModuloConversacion (modulo carlos))
+
 (declare (salience 6000))
 	(preguntaCargaPractica)
 =>
@@ -511,6 +595,9 @@ Honestamente no muestras nigún interés en lo que se imparte en ninguna rama as
 )
 
 (defrule repetir_pregunta_carga_practica
+    ; Comprobamos que estamos en el modulo de carlos
+    (ModuloConversacion (modulo carlos))
+
 (declare (salience 9999))
 	?dir <- (CargaPractica ?x usuario)
 	?dir2 <- (preguntaCargaPractica)
@@ -528,6 +615,9 @@ Honestamente no muestras nigún interés en lo que se imparte en ninguna rama as
 
 ;; Igual con la cantidad de examenes
 (defrule desempate_cantidad_examenes
+    ; Comprobamos que estamos en el modulo de carlos
+    (ModuloConversacion (modulo carlos))
+
 (declare (salience 4998))
 	(razonar)
 	(Recomendable ?rama)
@@ -543,6 +633,9 @@ Honestamente no muestras nigún interés en lo que se imparte en ninguna rama as
 
 
 (defrule pregunta_cantidad_examenes
+    ; Comprobamos que estamos en el modulo de carlos
+    (ModuloConversacion (modulo carlos))
+
 (declare (salience 6000))
 	(preguntaCantidadExamenes)
 =>
@@ -552,6 +645,9 @@ Honestamente no muestras nigún interés en lo que se imparte en ninguna rama as
 
 
 (defrule repetir_pregunta_cantidad_examenes
+    ; Comprobamos que estamos en el modulo de carlos
+    (ModuloConversacion (modulo carlos))
+
 (declare (salience 9999))
 	?dir <- (CantidadExamenes ?x usuario)
 	?dir2 <- (preguntaCantidadExamenes)
@@ -570,6 +666,9 @@ Honestamente no muestras nigún interés en lo que se imparte en ninguna rama as
 ;;; Aquí si tenía dos asignaturas empatadas las desempato según el criterio
 ;;; de desmpate que proceda
 (defrule descartar_desempate_cantidad_examenes
+    ; Comprobamos que estamos en el modulo de carlos
+    (ModuloConversacion (modulo carlos))
+
 (declare (salience 9000))
 	(Recomendable ?rama1)
 	?dir <- (Recomendable ?rama2)
@@ -586,6 +685,9 @@ Honestamente no muestras nigún interés en lo que se imparte en ninguna rama as
 
 
 (defrule descartar_desempate_carga_practica
+    ; Comprobamos que estamos en el modulo de carlos
+    (ModuloConversacion (modulo carlos))
+
 (declare (salience 9000))
 	(Recomendable ?rama1)
 	?dir <- (Recomendable ?rama2)
@@ -602,6 +704,9 @@ Honestamente no muestras nigún interés en lo que se imparte en ninguna rama as
 
 
 (defrule descartar_desempate_carga_teorica
+    ; Comprobamos que estamos en el modulo de carlos
+    (ModuloConversacion (modulo carlos))
+
 (declare (salience 9000))
 	(Recomendable ?rama1)
 	?dir <- (Recomendable ?rama2)
@@ -617,9 +722,12 @@ Honestamente no muestras nigún interés en lo que se imparte en ninguna rama as
 )
 
 ;;; Antes de finalizar el razonamiento debo elegir cuál rama recomendar
-;;; para ello entra mi preferencia personal que es como a mi más me 
+;;; para ello entra mi preferencia personal que es como a mi más me
 ;;; gusta. Esto sólo es relevante sino está claro cuál prefiere.
 (defrule desmepate_preferencia_personal
+    ; Comprobamos que estamos en el modulo de carlos
+    (ModuloConversacion (modulo carlos))
+
 (declare (salience 1000))
 	(razonar)
 	(Recomendable ?rama1)
@@ -636,6 +744,9 @@ Honestamente no muestras nigún interés en lo que se imparte en ninguna rama as
 
 ;;; Ahora finalmente paso a aconsejar la rama que elegí
 (defrule aconsejar
+    ; Comprobamos que estamos en el modulo de carlos
+    (ModuloConversacion (modulo carlos))
+
 	?dir <- (razonar)
 =>
 	(retract ?dir)
@@ -646,6 +757,9 @@ Honestamente no muestras nigún interés en lo que se imparte en ninguna rama as
 ;;; Uso conocimiento sobre si es necesario explicarlo (es decir lo he usado)
 ;;; tambié hago uso de conocimiento sobre si ya lo expliqué
 (defrule rama_a_aconsejar
+    ; Comprobamos que estamos en el modulo de carlos
+    (ModuloConversacion (modulo carlos))
+
 (declare (salience 9000))
 	(aconsejar)
 	(not (Consejo ?))
@@ -656,12 +770,15 @@ Honestamente no muestras nigún interés en lo que se imparte en ninguna rama as
 
 ;;; Reconstruyo el por qué se eligió esta rama
 (defrule reconstruir_interesado1
+    ; Comprobamos que estamos en el modulo de carlos
+    (ModuloConversacion (modulo carlos))
+
 (declare (salience 8010))
 	(aconsejar)
 	(not (explicado Interes))
 	?dir <- (Consejo ?rama)
 	(Interes ?rama)
-=> 
+=>
 	(assert (explicado Interes))
 	(retract ?dir)
 	(assert (Consejo ?rama "
@@ -669,6 +786,9 @@ Has mostrado interés en todos los campos principales que se imparten en la rama
 )
 
 (defrule reconstruir_interesado2
+    ; Comprobamos que estamos en el modulo de carlos
+    (ModuloConversacion (modulo carlos))
+
 (declare (salience 8010))
 	(aconsejar)
 	?dir <- (Consejo ?rama ?textant)
@@ -684,12 +804,15 @@ Has mostrado interés en todos los campos principales que se imparten en la rama
 )
 
 (defrule recontruir_interesado_parcial1
+    ; Comprobamos que estamos en el modulo de carlos
+    (ModuloConversacion (modulo carlos))
+
 (declare (salience 8009))
 	(aconsejar)
 	(not (explicado InteresParcial))
 	?dir <- (Consejo ?rama)
 	(InteresParcial ?rama)
-=> 
+=>
 	(assert (explicado InteresParcial))
 	(retract ?dir)
 	(assert (Consejo ?rama "
@@ -698,6 +821,9 @@ Has mostrado interés en algunos de los campos principales que se imparten en la
 
 
 (defrule reconstruir_interesado_parcial2
+    ; Comprobamos que estamos en el modulo de carlos
+    (ModuloConversacion (modulo carlos))
+
 (declare (salience 8009))
 	(aconsejar)
 	?dir <- (Consejo ?rama ?textant)
@@ -716,6 +842,9 @@ Has mostrado interés en algunos de los campos principales que se imparten en la
 
 ;;; Ahora si las hay, pongo las razones secundarias si las hay
 (defrule empezar_razon_secundaria_si_vacio
+    ; Comprobamos que estamos en el modulo de carlos
+    (ModuloConversacion (modulo carlos))
+
 (declare (salience 8008))
 	(aconsejar)
 	?dir <- (Consejo ?rama)
@@ -732,23 +861,29 @@ Aunque no hayas mostrado especial interés en ningún campo de los que te he pre
 
 
 (defrule recontruir_razon_secundaria_no_vacio
+    ; Comprobamos que estamos en el modulo de carlos
+    (ModuloConversacion (modulo carlos))
+
 (declare (salience 8008))
 	(aconsejar)
 	(not (explicado RazonSecundaria))
 	(not (explicado RazonSecundariaVacio))
 	?dir <- (Consejo ?rama ?textant)
 	?dir2 <- (explicar desempate)
-=> 
+=>
 	(assert (explicado RazonSecundaria))
 	(retract ?dir)
 	(retract ?dir2)
 	(assert (Consejo ?rama (str-cat ?textant "
-Además la rama se ajusta a tus gustos ya que: 
+Además la rama se ajusta a tus gustos ya que:
 ")))
 )
 
 
 (defrule reconstruir_razon_secundaria_carga_teorica
+    ; Comprobamos que estamos en el modulo de carlos
+    (ModuloConversacion (modulo carlos))
+
 (declare (salience 8007))
 	(aconsejar)
 	(not (explicado CargaTeorica))
@@ -764,6 +899,9 @@ Además la rama se ajusta a tus gustos ya que:
 )
 
 (defrule reconstruir_razon_secundaria_carga_practica
+    ; Comprobamos que estamos en el modulo de carlos
+    (ModuloConversacion (modulo carlos))
+
 (declare (salience 8007))
 	(aconsejar)
 	(not (explicado CargaPractica))
@@ -780,6 +918,9 @@ Además la rama se ajusta a tus gustos ya que:
 
 
 (defrule reconstruir_razon_secundaria_cantidad_examenes
+    ; Comprobamos que estamos en el modulo de carlos
+    (ModuloConversacion (modulo carlos))
+
 (declare (salience 8007))
 	(aconsejar)
 	(not (explicado CantidadExamenes))
@@ -796,6 +937,9 @@ Además la rama se ajusta a tus gustos ya que:
 
 
 (defrule reconstruir_preferencia_personal_vacio
+    ; Comprobamos que estamos en el modulo de carlos
+    (ModuloConversacion (modulo carlos))
+
 (declare (salience 8006))
 	(aconsejar)
 	(not (explicado personal))
@@ -813,6 +957,9 @@ interesante me parece a mi que sería la rama de CSI."))
 
 
 (defrule reconstruir_preferencia_personal
+    ; Comprobamos que estamos en el modulo de carlos
+    (ModuloConversacion (modulo carlos))
+
 (declare (salience 8006))
 	(aconsejar)
 	(not (explicado personal))
@@ -823,11 +970,14 @@ interesante me parece a mi que sería la rama de CSI."))
 	(retract ?dir)
 	(retract ?dir2)
 	(assert (Consejo ?rama (str-cat ?textant "
-Finalmente me he decidido por la que más interesante me parece a mí. Estas otras ramas también te podrían interesar: 
+Finalmente me he decidido por la que más interesante me parece a mí. Estas otras ramas también te podrían interesar:
 ")))
 )
 
 (defrule reconstruir_otras_ramas
+    ; Comprobamos que estamos en el modulo de carlos
+    (ModuloConversacion (modulo carlos))
+
 (declare (salience 8000))
 	(aconsejar)
 	(not (explicado personalVacio))
@@ -845,9 +995,12 @@ Finalmente me he decidido por la que más interesante me parece a mí. Estas otr
 
 ;;; La imprimo
 (defrule dar_consejo
+    ; Comprobamos que estamos en el modulo de carlos
+    (ModuloConversacion (modulo carlos))
+
 	(aconsejar)
 	(Consejo ?rama ?text)
-	(Texto ?rama ?ramatexto) 
+	(Texto ?rama ?ramatexto)
 =>
 	(printout t "#########################################
 #########################################
