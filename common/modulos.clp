@@ -5,7 +5,7 @@
 (deftemplate ModuloConversacion
     (slot modulo
         (type SYMBOL)
-        (allowed-symbols sergio carlos luis)
+        (allowed-symbols inicial sergio carlos luis)
     )
 )
 
@@ -13,12 +13,12 @@
 (deftemplate SiguienteModulo
     (slot modulo
         (type SYMBOL)
-        (allowed-symbols sergio carlos luis)
+        (allowed-symbols inicial sergio carlos luis)
     )
 
     (slot siguientemodulo
         (type SYMBOL)
-        (allowed-symbols sergio carlos luis)
+        (allowed-symbols inicial sergio carlos luis)
     )
 
 )
