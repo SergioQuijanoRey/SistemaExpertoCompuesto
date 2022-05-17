@@ -11,7 +11,23 @@
 
     (slot cantidad
         (type SYMBOL)
-        (allowed-symbols mucho normal poco nose)
+        (allowed-symbols si no mucho normal poco nose)
     )
 )
 
+(deftemplate UnificarEstudianteGusta1
+(declare (salience 9999))
+(EstudianteGusta (materia ?x) (cantidad ?y))
+(test (eq ?y mucho | normal))
+=>
+(assert (EstudianteGusta (materia ?x) (cantidad si)))
+)
+
+
+(deftemplate UnificarEstudianteGusta2
+(declare (salience 9999))
+(EstudianteGusta (materia ?x) (cantidad ?y))
+(test (eq ?y poco))
+=>
+(assert (EstudianteGusta (materia ?x) (cantidad no)))
+)
