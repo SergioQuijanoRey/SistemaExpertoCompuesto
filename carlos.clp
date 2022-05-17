@@ -8,7 +8,7 @@
 ;;; Voy a utilizar las siguiente propiedades:
 
 ;; EL sistema usará las opininiones del alumno sobre distintos campos de la informática
-;; para guardar dicha opinión utilizaré la tupla (Opinion tema si | no | nose)
+;; para guardar dicha opinión utilizaré la tupla (EstudianteGusta tema si | no | nose)
 ;; dónde opinión es sí o no dependiendo de si está interesado o no. La opinión
 ;; se pregunta directamente.
 
@@ -46,7 +46,7 @@
 ;;
 ;; (nombre_caracteristicas valor | nose rama)
 ;;
-;; Dónde valor puede ser Mucho | Poco ó Mucha | Poca dependiendo de la
+;; Dónde valor puede ser mucho | poco ó mucho | poco dependiendo de la
 ;; característica
 ;;
 ;; Esto es conocimiento por defecto
@@ -83,17 +83,17 @@
 ;;: Sino te gusta un campo asocidado a una rama entonces no se
 ;;; va a recomnedar. De esta forma descarto recomendaciones tan
 ;;; absurdas como recomendar la rama de CSI a un alumno al que no
-;;; le interesa la IA.
+;;; le interesa la ia.
 (deffacts Imprescindibles
-	(Imprescindible Ciencias_Computación Computacion_y_Sistemas_Inteligentes)
-	(Imprescindible IA Computacion_y_Sistemas_Inteligentes)
-	(Imprescindible Programacion Ingenieria_del_Software)
-	(Imprescindible Proyectos Ingenieria_del_Software)
-	(Imprescindible Hardware Ingenieria_de_Computadores)
-	(Imprescindible Bases_de_Datos Sistemas_de_Informacion)
-	(Imprescindible Ciencia_de_Datos Sistemas_de_Informacion)
-	(Imprescindible Seguridad Tecnologias_de_la_Informacion)
-	(Imprescindible Web Tecnologias_de_la_Informacion)
+	(Imprescindible cienciascomputacion Computacion_y_Sistemas_Inteligentes)
+	(Imprescindible ia Computacion_y_Sistemas_Inteligentes)
+	(Imprescindible programacion Ingenieria_del_Software)
+	(Imprescindible proyectos Ingenieria_del_Software)
+	(Imprescindible hardware Ingenieria_de_Computadores)
+	(Imprescindible basesdatos Sistemas_de_Informacion)
+	(Imprescindible cienciadatos Sistemas_de_Informacion)
+	(Imprescindible seguridad Tecnologias_de_la_Informacion)
+	(Imprescindible web Tecnologias_de_la_Informacion)
 )
 
 ;;;
@@ -102,42 +102,42 @@
 ;;; lo que se da en ellas
 ;;;
 (deffacts Caracteristicas
-	(CantidadExamenes Mucho Computacion_y_Sistemas_Inteligentes)
-	(CantidadExamenes Mucho Sistemas_de_Informacion)
-	(CantidadExamenes Mucho Tecnologias_de_la_Informacion)
-	(CantidadExamenes Mucho Ingenieria_de_Computadores)
-	(CantidadExamenes Poco Ingenieria_del_Software)
-	(CargaPractica Mucha Computacion_y_Sistemas_Inteligentes)
-	(CargaPractica Poca Sistemas_de_Informacion)
-	(CargaPractica Poca Tecnologias_de_la_Informacion)
-	(CargaPractica Mucha Ingenieria_de_Computadores)
-	(CargaPractica Mucha Ingenieria_del_Software)
-	(CargaTeorica Mucha Computacion_y_Sistemas_Inteligentes)
-	(CargaTeorica Mucha Sistemas_de_Informacion)
-	(CargaTeorica Poca Tecnologias_de_la_Informacion)
-	(CargaTeorica Poca Ingenieria_de_Computadores)
-	(CargaTeorica Poca Ingenieria_del_Software)
+	(cantidadexamenes mucho Computacion_y_Sistemas_Inteligentes)
+	(cantidadexamenes mucho Sistemas_de_Informacion)
+	(cantidadexamenes mucho Tecnologias_de_la_Informacion)
+	(cantidadexamenes mucho Ingenieria_de_Computadores)
+	(cantidadexamenes poco Ingenieria_del_Software)
+	(cargapractica mucho Computacion_y_Sistemas_Inteligentes)
+	(cargapractica poco Sistemas_de_Informacion)
+	(cargapractica poco Tecnologias_de_la_Informacion)
+	(cargapractica mucho Ingenieria_de_Computadores)
+	(cargapractica mucho Ingenieria_del_Software)
+	(cargateorica mucho Computacion_y_Sistemas_Inteligentes)
+	(cargateorica mucho Sistemas_de_Informacion)
+	(cargateorica poco Tecnologias_de_la_Informacion)
+	(cargateorica poco Ingenieria_de_Computadores)
+	(cargateorica poco Ingenieria_del_Software)
 )
 
-;;; Muchos conceptos clave en texto
+;;; muchos conceptos clave en texto
 (deffacts Texto
-	(Texto CargaPractica "carga práctica")
-	(Texto CargaTeorica "carga teorica")
-	(Texto CantidadExamenes "cantidad de exámenes")
+	(Texto cargapractica "carga práctica")
+	(Texto cargateorica "carga teorica")
+	(Texto cantidadexamenes "cantidad de exámenes")
 	(Texto Computacion_y_Sistemas_Inteligentes "Computación y Sistemas Inteligentes")
 	(Texto Sistemas_de_Informacion "Sistemas de Información")
 	(Texto Tecnologias_de_la_Informacion "Tecnologias de la Información")
 	(Texto Ingenieria_de_Computadores "Ingeniería de Computadores")
 	(Texto Ingenieria_del_Software "Ingeniería del Software")
-	(Texto Ciencias_Computación "Ciencia de la computación")
-	(Texto IA "Inteliencia Artificial")
-	(Texto Web "Programación Web")
-	(Texto Seguridad "Seguridad informática")
-	(Texto Ciencia_de_Datos "Ciencia de datos")
-	(Texto Bases_de_Datos "Bases de datos")
-	(Texto Hardware "Hardware")
-	(Texto Proyectos "Gestión de proyectos")
-	(Texto Programacion "Programación")
+	(Texto cienciascomputacion "Ciencia de la computación")
+	(Texto ia "Inteliencia Artificial")
+	(Texto web "Programación web")
+	(Texto seguridad "seguridad informática")
+	(Texto cienciadatos "Ciencia de datos")
+	(Texto basesdatos "Bases de datos")
+	(Texto hardware "Hardware")
+	(Texto proyectos "Gestión de proyectos")
+	(Texto programacion "Programación")
 )
 
 ;;; Aqui guardo el conocimiento sobre mi preferencia personal a la hora
@@ -195,7 +195,7 @@
     (ModuloConversacion (modulo carlos))
 	?dir <- (pregunta ?x ?y)
 =>
-	(assert (Opinion ?x ?y))
+	(assert (EstudianteGusta (materia ?x) (cantidad ?y)))
 	(assert (preguntar))
 	(retract ?dir)
 )
@@ -215,11 +215,11 @@
     ; Comprobamos que estamos en el modulo de carlos
     (ModuloConversacion (modulo carlos))
 	(Recomendable Computacion_y_Sistemas_Inteligentes)
-	(not (Opinion Ciencias_Computación ?))
+	(not (EstudianteGusta (materia cienciascomputacion) (cantidad ?)))
 	?dir <- (preguntar)
 =>
 	(printout t "¿Te interesa la teoría de la computación? (si | no | nose)" crlf)
-	(assert (pregunta Ciencias_Computación (read)))
+	(assert (pregunta cienciascomputacion (read)))
 	(retract ?dir)
 )
 
@@ -230,11 +230,11 @@
     ; Comprobamos que estamos en el modulo de carlos
     (ModuloConversacion (modulo carlos))
 	(Recomendable Computacion_y_Sistemas_Inteligentes)
-	(not (Opinion IA ?))
+	(not (EstudianteGusta (materia ia) (cantidad ?)))
 	?dir <- (preguntar)
 =>
 	(printout t "¿Te interesan las distintas técnicas de Inteligencia Artificial? (si | no | nose)" crlf)
-	(assert (pregunta IA (read)))
+	(assert (pregunta ia (read)))
 	(retract ?dir)
 )
 
@@ -245,11 +245,11 @@
     ; Comprobamos que estamos en el modulo de carlos
     (ModuloConversacion (modulo carlos))
 	(Recomendable Ingenieria_del_Software)
-	(not (Opinion Programacion ?))
+	(not (EstudianteGusta (materia programacion) (cantidad ?)))
 	?dir <- (preguntar)
 =>
 	(printout t "¿Quieres mejorar tu habilidades de programación? (si | no | nose)" crlf)
-	(assert (pregunta Programacion (read)))
+	(assert (pregunta programacion (read)))
 	(retract ?dir)
 )
 
@@ -260,11 +260,11 @@
     ; Comprobamos que estamos en el modulo de carlos
     (ModuloConversacion (modulo carlos))
 	(Recomendable Ingenieria_del_Software)
-	(not (Opinion Proyectos ?))
+	(not (EstudianteGusta (materia proyectos) (cantidad ?)))
 	?dir <- (preguntar)
 =>
 	(printout t "¿Y te interesaría trabajar gestionando proyectos en empresas? (si | no | nose)" crlf)
-	(assert (pregunta Proyectos (read)))
+	(assert (pregunta proyectos (read)))
 	(retract ?dir)
 )
 
@@ -275,11 +275,11 @@
     ; Comprobamos que estamos en el modulo de carlos
     (ModuloConversacion (modulo carlos))
 	(Recomendable Ingenieria_de_Computadores)
-	(not (Opinion Hardware ?))
+	(not (EstudianteGusta (materia hardware) (cantidad ?)))
 	?dir <- (preguntar)
 =>
 	(printout t "¿Te han gustado las asignaturas que has dado relacionadas con el hardware? (si | no | nose)" crlf)
-	(assert (pregunta Hardware (read)))
+	(assert (pregunta hardware (read)))
 	(retract ?dir)
 )
 
@@ -290,11 +290,11 @@
     ; Comprobamos que estamos en el modulo de carlos
     (ModuloConversacion (modulo carlos))
 	(Recomendable Sistemas_de_Informacion)
-	(not (Opinion Bases_de_Datos ?))
+	(not (EstudianteGusta (materia basesdatos) (cantidad ?)))
 	?dir <- (preguntar)
 =>
 	(printout t "¿Te insteresa como se almacena de la información y las bases de datos? (si | no | nose)" crlf)
-	(assert (pregunta Bases_de_Datos (read)))
+	(assert (pregunta basesdatos (read)))
 	(retract ?dir)
 )
 
@@ -305,11 +305,11 @@
     ; Comprobamos que estamos en el modulo de carlos
     (ModuloConversacion (modulo carlos))
 	(Recomendable Sistemas_de_Informacion)
-	(not (Opinion Ciencia_de_Datos ?))
+	(not (EstudianteGusta (materia cienciadatos) (cantidad ?)))
 	?dir <- (preguntar)
 =>
 	(printout t "¿Y que me dices del tema de la ciencia de datos, te gusta? (si | no | nose)" crlf)
-	(assert (pregunta Ciencia_de_Datos (read)))
+	(assert (pregunta cienciadatos (read)))
 	(retract ?dir)
 )
 
@@ -320,11 +320,11 @@
     ; Comprobamos que estamos en el modulo de carlos
     (ModuloConversacion (modulo carlos))
 	(Recomendable Tecnologias_de_la_Informacion)
-	(not (Opinion Seguridad ?))
+	(not (EstudianteGusta (materia seguridad) (cantidad ?)))
 	?dir <- (preguntar)
 =>
 	(printout t "¿Te interesa el tema de la seguridad informática? (si | no | nose)" crlf)
-	(assert (pregunta Seguridad (read)))
+	(assert (pregunta seguridad (read)))
 	(retract ?dir)
 )
 
@@ -335,11 +335,11 @@
     ; Comprobamos que estamos en el modulo de carlos
     (ModuloConversacion (modulo carlos))
 	(Recomendable Tecnologias_de_la_Informacion)
-	(not (Opinion Web ?))
+	(not (EstudianteGusta (materia web) (cantidad ?)))
 	?dir <- (preguntar)
 =>
 	(printout t "¿Quieres aprender programación web? (si | no | nose)" crlf)
-	(assert (pregunta Web (read)))
+	(assert (pregunta web (read)))
 	(retract ?dir)
 )
 
@@ -369,7 +369,7 @@
     ; Comprobamos que estamos en el modulo de carlos
     (ModuloConversacion (modulo carlos))
 	(Imprescindible ?x ?rama)
-	(Opinion ?x no)
+	(EstudianteGusta (materia ?x) (cantidad no))
 	(not (Interes ?rama))
 	(not (InteresParcial ?rama))
 	?dir <- (Recomendable ?rama)
@@ -393,7 +393,7 @@
 	(not (InteresParcial ?rama))
 	(not (Descartada ?rama)) ;; Esto es innecesario pues recomendable y descartada son excluyentes
 	(Imprescindible ?x ?rama)
-	(Opinion ?x si)
+	(EstudianteGusta (materia ?x) (cantidad si))
 =>
 	(assert (Interes ?rama))
 )
@@ -411,11 +411,11 @@
 	(not (InteresParcial ?rama))
 	(not (Descartada ?rama)) ;; Esto es innecesario pues recomendable y descartada son excluyentes
 	(Imprescindible ?x ?rama)
-	(Opinion ?x si)
+	(EstudianteGusta (materia ?x) (cantidad si))
 	(Imprescindible ?y ?rama)
 	(or
-		(Opinion ?y nose)
-		(Opinion ?y no)
+		(EstudianteGusta (materia ?y) (cantidad nose))
+		(EstudianteGusta (materia ?y) (cantidad no))
 	)
 =>
 	(assert (InteresParcial ?rama))
@@ -548,12 +548,12 @@ Honestamente no muestras nigún interés en lo que se imparte en ninguna rama as
 	(Recomendable ?rama)
 	(Recomendable ?rama2)
 	(test (neq ?rama ?rama2))
-	(CargaTeorica ?c1 ?rama)
-	(CargaTeorica ?c2 ?rama2)
+	(cargateorica ?c1 ?rama)
+	(cargateorica ?c2 ?rama2)
 	(test (neq ?c1 ?c2))
-	(not (preguntaCargaTeorica))
+	(not (preguntacargateorica))
 =>
-	(assert (preguntaCargaTeorica))
+	(assert (preguntacargateorica))
 )
 
 (defrule pregunta_carga_teorica
@@ -562,10 +562,10 @@ Honestamente no muestras nigún interés en lo que se imparte en ninguna rama as
 
     ; Comprobamos que estamos en el modulo de carlos
     (ModuloConversacion (modulo carlos))
-	(preguntaCargaTeorica)
+	(preguntacargateorica)
 =>
-	(printout t "¿Prefieres las asignaturas con mucha o poca teoría?(Mucha | Poca | nose)" crlf)
-	(assert (CargaTeorica (read) usuario))
+	(printout t "¿Prefieres las asignaturas con mucha o poca teoría?(mucho | poco | nose)" crlf)
+	(assert (cargateorica (read) usuario))
 )
 
 (defrule repetir_pregunta_carga_teorica
@@ -574,17 +574,17 @@ Honestamente no muestras nigún interés en lo que se imparte en ninguna rama as
 
     ; Comprobamos que estamos en el modulo de carlos
     (ModuloConversacion (modulo carlos))
-	?dir <- (CargaTeorica ?x usuario)
-	?dir2 <- (preguntaCargaTeorica)
+	?dir <- (cargateorica ?x usuario)
+	?dir2 <- (preguntacargateorica)
 	(and
-		(test (neq ?x Mucha))
-		(test (neq ?x Poca))
+		(test (neq ?x mucho))
+		(test (neq ?x poco))
 		(test (neq ?x nose))
 	)
 =>
 	(retract ?dir)
 	(retract ?dir2)
-	(assert (preguntaCargaTeorica))
+	(assert (preguntacargateorica))
 )
 
 
@@ -600,12 +600,12 @@ Honestamente no muestras nigún interés en lo que se imparte en ninguna rama as
 	(Recomendable ?rama)
 	(Recomendable ?rama2)
 	(test (neq ?rama ?rama2))
-	(CargaPractica ?c1 ?rama)
-	(CargaPractica ?c2 ?rama2)
+	(cargapractica ?c1 ?rama)
+	(cargapractica ?c2 ?rama2)
 	(test (neq ?c1 ?c2))
-	(not (preguntaCargaPractica))
+	(not (preguntacargapractica))
 =>
-	(assert (preguntaCargaPractica))
+	(assert (preguntacargapractica))
 )
 
 
@@ -615,10 +615,10 @@ Honestamente no muestras nigún interés en lo que se imparte en ninguna rama as
 
     ; Comprobamos que estamos en el modulo de carlos
     (ModuloConversacion (modulo carlos))
-	(preguntaCargaPractica)
+	(preguntacargapractica)
 =>
-	(printout t "¿Cuántas prácticas prefieres?(Mucha | Poca | nose)" crlf)
-	(assert (CargaPractica (read) usuario))
+	(printout t "¿Cuántas prácticas prefieres?(mucho | poco | nose)" crlf)
+	(assert (cargapractica (read) usuario))
 )
 
 (defrule repetir_pregunta_carga_practica
@@ -627,17 +627,17 @@ Honestamente no muestras nigún interés en lo que se imparte en ninguna rama as
 
     ; Comprobamos que estamos en el modulo de carlos
     (ModuloConversacion (modulo carlos))
-	?dir <- (CargaPractica ?x usuario)
-	?dir2 <- (preguntaCargaPractica)
+	?dir <- (cargapractica ?x usuario)
+	?dir2 <- (preguntacargapractica)
 	(and
-		(test (neq ?x Mucha))
-		(test (neq ?x Poca))
+		(test (neq ?x mucho))
+		(test (neq ?x poco))
 		(test (neq ?x nose))
 	)
 =>
 	(retract ?dir)
 	(retract ?dir2)
-	(assert (preguntaCargaPractica))
+	(assert (preguntacargapractica))
 )
 
 
@@ -652,12 +652,12 @@ Honestamente no muestras nigún interés en lo que se imparte en ninguna rama as
 	(Recomendable ?rama)
 	(Recomendable ?rama2)
 	(test (neq ?rama ?rama2))
-	(CantidadExamenes ?c1 ?rama)
-	(CantidadExamenes ?c2 ?rama2)
+	(cantidadexamenes ?c1 ?rama)
+	(cantidadexamenes ?c2 ?rama2)
 	(test (neq ?c1 ?c2))
-	(not (preguntaCantidadExamenes))
+	(not (preguntacantidadexamenes))
 =>
-	(assert (preguntaCantidadExamenes))
+	(assert (preguntacantidadexamenes))
 )
 
 
@@ -667,10 +667,10 @@ Honestamente no muestras nigún interés en lo que se imparte en ninguna rama as
 
     ; Comprobamos que estamos en el modulo de carlos
     (ModuloConversacion (modulo carlos))
-	(preguntaCantidadExamenes)
+	(preguntacantidadexamenes)
 =>
-	(printout t "¿Te gusta que las asignaturas tengan muchos exámenes?(Mucho | Poco | nose)" crlf)
-	(assert (CantidadExamenes (read) usuario))
+	(printout t "¿Te gusta que las asignaturas tengan muchos exámenes?(mucho | poco | nose)" crlf)
+	(assert (cantidadexamenes (read) usuario))
 )
 
 
@@ -680,17 +680,17 @@ Honestamente no muestras nigún interés en lo que se imparte en ninguna rama as
 
     ; Comprobamos que estamos en el modulo de carlos
     (ModuloConversacion (modulo carlos))
-	?dir <- (CantidadExamenes ?x usuario)
-	?dir2 <- (preguntaCantidadExamenes)
+	?dir <- (cantidadexamenes ?x usuario)
+	?dir2 <- (preguntacantidadexamenes)
 	(and
-		(test (neq ?x Mucho))
-		(test (neq ?x Poco))
+		(test (neq ?x mucho))
+		(test (neq ?x poco))
 		(test (neq ?x nose))
 	)
 =>
 	(retract ?dir)
 	(retract ?dir2)
-	(assert (preguntaCantidadExamenes))
+	(assert (preguntacantidadexamenes))
 )
 
 
@@ -704,9 +704,9 @@ Honestamente no muestras nigún interés en lo que se imparte en ninguna rama as
     (ModuloConversacion (modulo carlos))
 	(Recomendable ?rama1)
 	?dir <- (Recomendable ?rama2)
-	(CantidadExamenes ?u usuario)
-	(CantidadExamenes ?r1 ?rama1)
-	(CantidadExamenes ?r2 ?rama2)
+	(cantidadexamenes ?u usuario)
+	(cantidadexamenes ?r1 ?rama1)
+	(cantidadexamenes ?r2 ?rama2)
 	(test (neq ?r1 ?r2))
 	(test (eq ?r1 ?u))
 =>
@@ -724,9 +724,9 @@ Honestamente no muestras nigún interés en lo que se imparte en ninguna rama as
     (ModuloConversacion (modulo carlos))
 	(Recomendable ?rama1)
 	?dir <- (Recomendable ?rama2)
-	(CargaPractica ?u usuario)
-	(CargaPractica ?r1 ?rama1)
-	(CargaPractica ?r2 ?rama2)
+	(cargapractica ?u usuario)
+	(cargapractica ?r1 ?rama1)
+	(cargapractica ?r2 ?rama2)
 	(test (neq ?r1 ?r2))
 	(test (eq ?r1 ?u))
 =>
@@ -744,9 +744,9 @@ Honestamente no muestras nigún interés en lo que se imparte en ninguna rama as
     (ModuloConversacion (modulo carlos))
 	(Recomendable ?rama1)
 	?dir <- (Recomendable ?rama2)
-	(CargaTeorica ?u usuario)
-	(CargaTeorica ?r1 ?rama1)
-	(CargaTeorica ?r2 ?rama2)
+	(cargateorica ?u usuario)
+	(cargateorica ?r1 ?rama1)
+	(cargateorica ?r2 ?rama2)
 	(test (neq ?r1 ?r2))
 	(test (eq ?r1 ?u))
 =>
@@ -869,7 +869,7 @@ Has mostrado interés en algunos de los campos principales que se imparten en la
 	?dir <- (Consejo ?rama ?textant)
 	(InteresParcial ?rama)
 	(Imprescindible ?x ?rama)
-	(Opinion ?x si)
+	(EstudianteGusta (materia ?x) (cantidad si))
 	(not (explicado ?x))
 	(Texto ?x ?text)
 =>
@@ -929,13 +929,13 @@ Además la rama se ajusta a tus gustos ya que:
     ; Comprobamos que estamos en el modulo de carlos
     (ModuloConversacion (modulo carlos))
 	(aconsejar)
-	(not (explicado CargaTeorica))
+	(not (explicado cargateorica))
 	?dir <- (Consejo ?rama ?textant)
-	(CargaTeorica ?ct usuario)
-	(CargaTeorica ?ctrama ?rama)
+	(cargateorica ?ct usuario)
+	(cargateorica ?ctrama ?rama)
 	(test (eq ?ctrama ?ct))
 =>
-	(assert (explicado CargaTeorica))
+	(assert (explicado cargateorica))
 	(retract ?dir)
 	(assert (Consejo ?rama (str-cat ?textant "	Esta rama tiene " ?ct " carga teórica que es como tu prefieres.
 ")))
@@ -948,13 +948,13 @@ Además la rama se ajusta a tus gustos ya que:
     ; Comprobamos que estamos en el modulo de carlos
     (ModuloConversacion (modulo carlos))
 	(aconsejar)
-	(not (explicado CargaPractica))
+	(not (explicado cargapractica))
 	?dir <- (Consejo ?rama ?textant)
-	(CargaPractica ?ct usuario)
-	(CargaPractica ?ctrama ?rama)
+	(cargapractica ?ct usuario)
+	(cargapractica ?ctrama ?rama)
 	(test (eq ?ctrama ?ct))
 =>
-	(assert (explicado CargaPractica))
+	(assert (explicado cargapractica))
 	(retract ?dir)
 	(assert (Consejo ?rama (str-cat ?textant "	Esta rama tiene " ?ct " carga práctica que es como tu prefieres.
 ")))
@@ -968,13 +968,13 @@ Además la rama se ajusta a tus gustos ya que:
     ; Comprobamos que estamos en el modulo de carlos
     (ModuloConversacion (modulo carlos))
 	(aconsejar)
-	(not (explicado CantidadExamenes))
+	(not (explicado cantidadexamenes))
 	?dir <- (Consejo ?rama ?textant)
-	(CantidadExamenes ?ct usuario)
-	(CantidadExamenes ?ctrama ?rama)
+	(cantidadexamenes ?ct usuario)
+	(cantidadexamenes ?ctrama ?rama)
 	(test (eq ?ctrama ?ct))
 =>
-	(assert (explicado CantidadExamenes))
+	(assert (explicado cantidadexamenes))
 	(retract ?dir)
 	(assert (Consejo ?rama (str-cat ?textant "	Las asignaturas de esta rama tienen " ?ct " número de exámenes que es como tu prefieres.
 ")))
