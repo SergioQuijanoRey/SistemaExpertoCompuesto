@@ -16,7 +16,7 @@
     ; Estamos en el modulo de Sergio
     (ModuloConversacion (modulo sergio))
 
-    (EstudianteGustaHardware (cantidad mucho))
+    (EstudianteGusta (materia hardware) (cantidad mucho))
 
     =>
 
@@ -38,7 +38,7 @@
     ; Estamos en el modulo de Sergio
     (ModuloConversacion (modulo sergio))
 
-    (EstudianteGustaHardware (cantidad poco))
+    (EstudianteGusta (materia hardware) (cantidad poco))
 
     =>
 
@@ -58,7 +58,7 @@
     ; Estamos en el modulo de Sergio
     (ModuloConversacion (modulo sergio))
 
-    (EstudianteGustaHardware (cantidad nose))
+    (EstudianteGusta (materia hardware) (cantidad nose))
 
     =>
 
@@ -241,7 +241,7 @@
     (NotaMediaCategorica (valor alta | muyalta))
 
     ; Le gustan las matematicas al estudiante
-    (EstudianteGustaMatematicas (cantidad si))
+    (EstudianteGusta (materia matematicas) (cantidad si))
 
     =>
 
@@ -275,7 +275,7 @@
     (NotaMediaCategorica (valor baja | normal))
 
     ; Le gustan las matematicas al estudiante
-    (EstudianteGustaMatematicas (cantidad si))
+    (EstudianteGusta (materia matematicas) (cantidad si))
 
     =>
 
@@ -302,7 +302,7 @@
     ; Estamos en el modulo de Sergio
     (ModuloConversacion (modulo sergio))
 
-    (EstudianteGustaMatematicas (cantidad no))
+    (EstudianteGusta (materia matematicas) (cantidad no))
 
     =>
 
@@ -323,7 +323,7 @@
     ; Estamos en el modulo de Sergio
     (ModuloConversacion (modulo sergio))
 
-    (EstudianteGustaMatematicas (cantidad nose))
+    (EstudianteGusta (materia matematicas) (cantidad nose))
 
     =>
 
@@ -352,8 +352,8 @@
     (ModuloConversacion (modulo sergio))
 
     ; Le gusta programar, y no le gustan las matematicas
-    (EstudianteGustaProgramar (cantidad si))
-    (EstudianteGustaMatematicas (cantidad no))
+    (EstudianteGusta (materia programar) (cantidad si))
+    (EstudianteGusta (materia matematicas) (cantidad no))
 
     =>
 
@@ -381,8 +381,8 @@
     (ModuloConversacion (modulo sergio))
 
     ; Le gusta programar, tiene nota media y no le gustan las matematicas
-    (EstudianteGustaProgramar (cantidad no))
-    (EstudianteGustaMatematicas (cantidad no))
+    (EstudianteGusta (materia programar) (cantidad no))
+    (EstudianteGusta (materia matematicas) (cantidad no))
 
     =>
 
@@ -415,8 +415,8 @@
     (ModuloConversacion (modulo sergio))
 
     ; Le gusta programar, tiene nota media y no le gustan las matematicas
-    (EstudianteGustaProgramar (cantidad nose))
-    (EstudianteGustaMatematicas (cantidad no))
+    (EstudianteGusta (materia programar) (cantidad nose))
+    (EstudianteGusta (materia matematicas) (cantidad no))
 
     =>
 

@@ -14,6 +14,7 @@
 ; comprobaciones que se encuentran en estos ficheros common/.clp
 (load common/modulos.clp)
 (load common/conversacion_inicial.clp)
+(load common/estructuras_comunes.clp)
 
 ; Ahora cargo el estado inicial comun, que depende de los modulos comunes cargados previamente
 (load common/estado_inicial.clp)
