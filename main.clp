@@ -2,7 +2,10 @@
 ; Autores:
 ; Sergio Quijano Rey
 ;   sergioquijano@correo.ugr.es
-; TODO -- Luis y Carlos poned aqui vuestros datos si os parece
+; Luis Rodriguez Domingo
+;   luisrd@correo.ugr.es
+; Carlos Lara Casanova
+;   carloslara@correo.ugr.es
 
 ; EJECUCION RAPIDA DEL SCRIPT
 ;===================================================================================================
