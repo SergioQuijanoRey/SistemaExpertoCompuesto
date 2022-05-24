@@ -21,7 +21,10 @@
 (defrule UnificarEstudianteGustaMuchoONormal
     (declare (salience 9999))
     (EstudianteGusta (materia ?x) (cantidad ?y))
-    (test (eq ?y mucho | normal))
+    (test (or
+        (eq ?y normal)
+        (eq ?y mucho)
+    ))
 
     =>
 
