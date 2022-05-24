@@ -38,7 +38,7 @@
 
 
     ; jerarquia de prioridades)
-    (declare (salience 9000))
+    (declare (salience 6000))
 
     ; Estamos en el modulo de Sergio
     (ModuloConversacion (modulo sergio))
