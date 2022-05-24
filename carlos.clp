@@ -58,7 +58,6 @@
 ;; (nombre_caracteristicas valor | nose usuario)
 ;;
 ;;
-
 ;; Tambien guardo el orden de las ramas según mi preferencia para ello guardo para cada rama
 ;; (Orden 1|2|3|4|5 rama)
 ;; dónde cuando menor el número más prioridad
@@ -158,8 +157,6 @@
 
 ;;; Al inicio todas las ramas son recomendables porque no se nada de la persona
 (defrule iniciar_recomendables
-
-
 (declare (salience 9999))
 
     ; Comprobamos que estamos en el modulo de carlos
@@ -300,7 +297,7 @@
 
 (defrule pregunta6
 
-    (declare (salience 4995))
+(declare (salience 4995))
 
     ; Comprobamos que estamos en el modulo de carlos
     (ModuloConversacion (modulo carlos))
@@ -1044,7 +1041,7 @@ Finalmente me he decidido por la que más interesante me parece a mí. Estas otr
 ;;; La imprimo
 (defrule dar_consejo
 
-(declare (salience 9999))
+(declare (salience -9000))
 
     ; Comprobamos que estamos en el modulo de carlos
     (ModuloConversacion (modulo carlos))
@@ -1059,4 +1056,13 @@ Finalmente me he decidido por la que más interesante me parece a mí. Estas otr
 	(printout t "Te aconsejo la rama " ?ramatexto crlf)
 	(printout t "Las razones son las siguientes:
 " ?text crlf)
+	(assert (QuieroSiguienteModulo si))
+)
+
+(defrule print1
+(declare (salience -9000))
+(ModuloConversacion (modulo carlos))
+(EstudianteGusta (materia ?x) (cantidad ?y)) 
+=>
+(printout t "EstudianteGusta materia " ?x " cantidad " ?y crlf)
 )
