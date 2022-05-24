@@ -34,6 +34,10 @@
     ; Usamos la regla para saber cual es el siguiente modulo
     (SiguienteModulo (modulo ?modprevio) (siguientemodulo ?modsiguiente))
 
+    ; Tomamos los caracteres ascii de los dos modulos por los que estamos transicionando
+    (AsciiArt ?modprevio ?arteprevio)
+    (AsciiArt ?modsiguiente ?artesiguiente)
+
     =>
 
     ; Hacemos el cambio de modulo
@@ -45,8 +49,17 @@
     (retract ?quieroprevio)
 
     ; Mostramos un mensaje informativo por pantalla
-    (printout t "" crlf)
-    (printout t "-- Pasamos del modulo de " ?modprevio " al modulo de " ?modsiguiente crlf)
-    (printout t "" crlf)
+    (printout t ?arteprevio crlf)
+    (printout t "       | |  " crlf)
+    (printout t "       | |  " crlf)
+    (printout t "       | |  " crlf)
+    (printout t "       | |  " crlf)
+    (printout t "       |_|  " crlf)
+    (printout t "     \\ \\ / /" crlf)
+    (printout t "      \\ V / " crlf)
+    (printout t "       \\_/  " crlf)
+    (printout t ?artesiguiente crlf)
+
+
 
 )
