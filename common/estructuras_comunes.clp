@@ -18,7 +18,7 @@
 ; Definimos estas dos reglas para unificar los criterios de los tres compañeros
 ; Sergio tiene reglas que usan mucho poco normal. Luis y Carlos solo tienen reglas de si | no | nose
 ; Usamos estas dos reglas para hacer la transformacion
-(deftemplate UnificarEstudianteGustaMuchoONormal
+(defrule UnificarEstudianteGustaMuchoONormal
     (declare (salience 9999))
     (EstudianteGusta (materia ?x) (cantidad ?y))
     (test (eq ?y mucho | normal))
@@ -27,7 +27,7 @@
 
     (assert (EstudianteGusta (materia ?x) (cantidad si)))
 )
-(deftemplate UnificarEstudianteGustaPoco
+(defrule UnificarEstudianteGustaPoco
     (declare (salience 9999))
 
     (EstudianteGusta (materia ?x) (cantidad ?y))
