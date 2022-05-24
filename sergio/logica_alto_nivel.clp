@@ -345,14 +345,13 @@
 ; Ing. Software porque es la rama con mas programacion sin otros elementos
 (defrule GustaProgramarEntoncesSoftware
 
-
     (declare (salience 8000))
 
     ; Estamos en el modulo de Sergio
     (ModuloConversacion (modulo sergio))
 
     ; Le gusta programar, y no le gustan las matematicas
-    (EstudianteGusta (materia programar) (cantidad si))
+    (EstudianteGusta (materia programacion) (cantidad si))
     (EstudianteGusta (materia matematicas) (cantidad no))
 
     =>
@@ -381,7 +380,7 @@
     (ModuloConversacion (modulo sergio))
 
     ; Le gusta programar, tiene nota media y no le gustan las matematicas
-    (EstudianteGusta (materia programar) (cantidad no))
+    (EstudianteGusta (materia programacion) (cantidad no))
     (EstudianteGusta (materia matematicas) (cantidad no))
 
     =>
@@ -415,7 +414,7 @@
     (ModuloConversacion (modulo sergio))
 
     ; Le gusta programar, tiene nota media y no le gustan las matematicas
-    (EstudianteGusta (materia programar) (cantidad nose))
+    (EstudianteGusta (materia programacion) (cantidad nose))
     (EstudianteGusta (materia matematicas) (cantidad no))
 
     =>

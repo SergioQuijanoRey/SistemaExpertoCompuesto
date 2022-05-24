@@ -59,7 +59,7 @@
 
     ; La nota media del estudiante es muyalta
     ; Ademas, no le gusta programar o no lo sabe (caso 2. descrito en conversacion_desempatar.clp)
-    (EstudianteGusta (materia programar) (cantidad no | nose))
+    (EstudianteGusta (materia programacion) (cantidad no | nose))
     (NotaMediaCategorica (valor muyalta))
 
     =>

@@ -300,7 +300,7 @@
 
 (defrule pregunta6
 
-(declare (salience 4995))
+    (declare (salience 4995))
 
     ; Comprobamos que estamos en el modulo de carlos
     (ModuloConversacion (modulo carlos))
