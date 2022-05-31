@@ -15,34 +15,8 @@
     )
 )
 
-; Definimos estas dos reglas para unificar los criterios de los tres compañeros
-; Sergio tiene reglas que usan mucho poco normal. Luis y Carlos solo tienen reglas de si | no | nose
-; Usamos estas dos reglas para hacer la transformacion
-(defrule UnificarEstudianteGustaMuchoONormal
-    (declare (salience 9999))
-    (EstudianteGusta (materia ?x) (cantidad ?y))
-    (test (or
-        (eq ?y normal)
-        (eq ?y mucho)
-    ))
-
-    =>
-
-    (assert (EstudianteGusta (materia ?x) (cantidad si)))
-)
-(defrule UnificarEstudianteGustaPoco
-    (declare (salience 9999))
-
-    (EstudianteGusta (materia ?x) (cantidad ?y))
-    (test (eq ?y poco))
-
-    =>
-
-    (assert (EstudianteGusta (materia ?x) (cantidad no)))
-)
-
-; Usamos esta regla para unificar la regla que tiene Carlos sobre hardware (si no nose) con la que
-; tiene sergio (mucho normal poco nose)
+; Usamos estas reglas para unificar la regla que tiene Carlos sobre hardware (si no nose) con la que
+; tiene sergio (mucho normal poco nose) en el caso de hardware
 (defrule UnificarHardwareLuisToSergio_casosi
     (declare (salience 9999))
 
@@ -58,7 +32,7 @@
     (retract ?hecho)
 
     ; Introducimos un hecho en el formato nuevo
-    (assert (EstudianteGusta (materia hardware (cantidad mucho))))
+    (assert (EstudianteGusta (materia hardware) (cantidad mucho)))
 )
 (defrule UnificarHardwareLuisToSergio_casono
     (declare (salience 9999))
@@ -75,5 +49,5 @@
     (retract ?hecho)
 
     ; Introducimos un hecho en el formato nuevo
-    (assert (EstudianteGusta (materia hardware (cantidad poco))))
+    (assert (EstudianteGusta (materia hardware) (cantidad poco)))
 )
