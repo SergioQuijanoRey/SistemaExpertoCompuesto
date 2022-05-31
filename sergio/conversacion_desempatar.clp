@@ -54,6 +54,9 @@
     (EstudianteGusta (materia programacion) (cantidad no | nose))
     (EstudianteGusta (materia matematicas) (cantidad no | nose))
 
+    ; Comprobamos que no tenemos la respuesta desde otro modulo
+    (not (EstudianteGusta (mateira basesdatos) (cantidad ?)))
+
     =>
 
     (printout t "Veo que no te gustan ni las matematicas ni programar. Ambas ramas tienen un poco de todo asi que te voy a tener que preguntar por otros temas" crlf)
@@ -149,6 +152,9 @@
     ; Al estudiante no le gusta ni programar ni las matematicas
     (EstudianteGusta (materia programacion) (cantidad no | nose))
     (EstudianteGusta (materia matematicas) (cantidad no | nose))
+
+    ; Comprobamos que no tengamos la respuesta desde otro modulo
+    (not (EstudianteGusta (materia linux) (cantidad ?)))
 
     =>
 
