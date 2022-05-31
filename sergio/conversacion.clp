@@ -37,6 +37,9 @@
     ; Comprobamos que no hayamos terminado con la conversacion
     (Terminado (estado no))
 
+    ; Compruebo que no tengamos ya una respuesta a esta pregunta en otro modulo
+    (not (EstudianteGusta (materia hardware) (cantidad ?)))
+
     =>
 
 
@@ -133,6 +136,9 @@
     ; Comprobamos que no hayamos terminado con la conversacion
     (Terminado (estado no))
 
+    ; Comprobamos que no se haya dado ya una respuesta a esta pregunta en otro modulo
+    (not (NotaMediaEstudiante (numero ?)))
+
     =>
 
 
@@ -221,6 +227,9 @@
 
     ; Comprobamos que no hayamos terminado con la conversacion
     (Terminado (estado no))
+
+    ; Comprobamos que no tengamos ya la respuesta desde otro modulo
+    (not (EstudianteGusta (materia matematicas) (cantidad ?)))
 
     =>
 
@@ -318,6 +327,9 @@
     ; tomada, solo hay que elegir una de las dos ramas empatadas. En teste punto de la conversacion
     ; ya puede darse esa condicion
     (EmpateInformacion (flag no))
+
+    ; Comprobamos que no tengamos la respuesta desde otro modulo
+    (not (EstudianteGusta (materia programacion) (cantidad ?)))
 
     =>
 

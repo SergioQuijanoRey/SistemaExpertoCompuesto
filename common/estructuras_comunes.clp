@@ -15,28 +15,39 @@
     )
 )
 
-; Definimos estas dos reglas para unificar los criterios de los tres compañeros
-; Sergio tiene reglas que usan mucho poco normal. Luis y Carlos solo tienen reglas de si | no | nose
-; Usamos estas dos reglas para hacer la transformacion
-(defrule UnificarEstudianteGustaMuchoONormal
+; Usamos estas reglas para unificar la regla que tiene Carlos sobre hardware (si no nose) con la que
+; tiene sergio (mucho normal poco nose) en el caso de hardware
+(defrule UnificarHardwareLuisToSergio_casosi
     (declare (salience 9999))
-    (EstudianteGusta (materia ?x) (cantidad ?y))
-    (test (or
-        (eq ?y normal)
-        (eq ?y mucho)
-    ))
+
+    ; Estamos en el modulo de sergio, que necesita de este cambio
+    (ModuloConversacion (modulo sergio))
+
+    ; Tenemos una regla sobre hardware que hay que unificar
+    ?hecho <- (EstudianteGusta (materia hardware) (cantidad si))
 
     =>
 
-    (assert (EstudianteGusta (materia ?x) (cantidad si)))
+    ; Retiramos el hecho en el formato antiguo
+    (retract ?hecho)
+
+    ; Introducimos un hecho en el formato nuevo
+    (assert (EstudianteGusta (materia hardware) (cantidad mucho)))
 )
-(defrule UnificarEstudianteGustaPoco
+(defrule UnificarHardwareLuisToSergio_casono
     (declare (salience 9999))
 
-    (EstudianteGusta (materia ?x) (cantidad ?y))
-    (test (eq ?y poco))
+    ; Estamos en el modulo de sergio, que necesita de este cambio
+    (ModuloConversacion (modulo sergio))
+
+    ; Tenemos una regla sobre hardware que hay que unificar
+    ?hecho <- (EstudianteGusta (materia hardware) (cantidad no))
 
     =>
 
-    (assert (EstudianteGusta (materia ?x) (cantidad no)))
+    ; Retiramos el hecho en el formato antiguo
+    (retract ?hecho)
+
+    ; Introducimos un hecho en el formato nuevo
+    (assert (EstudianteGusta (materia hardware) (cantidad poco)))
 )
