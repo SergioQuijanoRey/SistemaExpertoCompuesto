@@ -30,7 +30,7 @@
     (MensajeInicial dado)
 
     ; Al estudiante le gustan las matematicas
-    (EstudianteGustaMatematicas (cantidad si))
+    (EstudianteGusta (materia matematicas) (cantidad si))
 
     =>
 
@@ -59,7 +59,7 @@
 
     ; La nota media del estudiante es muyalta
     ; Ademas, no le gusta programar o no lo sabe (caso 2. descrito en conversacion_desempatar.clp)
-    (EstudianteGustaProgramar (cantidad no | nose))
+    (EstudianteGusta (materia programacion) (cantidad no | nose))
     (NotaMediaCategorica (valor muyalta))
 
     =>
@@ -92,7 +92,7 @@
     (MensajeInicial dado)
 
     ; Al estudiante le gustan las bases de datos
-    (EstudianteGustaBasesDatos (cantidad si))
+    (EstudianteGusta (materia basesdatos) (cantidad si))
 
     =>
 
@@ -124,7 +124,7 @@
     (MensajeInicial dado)
 
     ; Al estudiante le gustan linux
-    (EstudianteGustaLinux (cantidad si))
+    (EstudianteGusta (materia linux) (cantidad si))
 
     =>
 
@@ -157,7 +157,7 @@
     (MensajeInicial dado)
 
     ; Al estudiante le gustan linux
-    (EstudianteGustaLinux (cantidad no | nose))
+    (EstudianteGusta (materia linux) (cantidad no | nose))
 
     =>
 

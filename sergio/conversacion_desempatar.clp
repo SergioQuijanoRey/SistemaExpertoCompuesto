@@ -51,8 +51,8 @@
     (EmpateInformacion (flag si))
 
     ; Al estudiante no le gusta ni programar ni las matematicas
-    (EstudianteGustaProgramar (cantidad no | nose))
-    (EstudianteGustaMatematicas (cantidad no | nose))
+    (EstudianteGusta (materia programacion) (cantidad no | nose))
+    (EstudianteGusta (materia matematicas) (cantidad no | nose))
 
     =>
 
@@ -61,7 +61,7 @@
     (printout t "Las opciones son: si / no / nose" crlf)
     (printout t "Recuerda que no puedes responder 'no se', escribelo todo junto como 'nose'" crlf)
     (printout t "Entrada: ")
-    (assert (EstudianteGustaBasesDatos (cantidad (read))))
+    (assert (EstudianteGusta (materia basesdatos) (cantidad (read))))
 )
 
 (defrule ValidarEstudianteGustaBasesDatos
@@ -74,7 +74,7 @@
 
 
     ; El estudiante ya ha introducido una respuesta a la pregunta sobre el hardware
-    (EstudianteGustaBasesDatos (cantidad ?nivel))
+    (EstudianteGusta (materia basesdatos) (cantidad ?nivel))
 
     ; La respuesta dada no es valida
     (test (and
@@ -105,7 +105,7 @@
     (EmpateInformacion (flag si))
 
     ; Tomo la respuesta dada por el estudiante; que tendremos que retirar
-    ?respuesta <- (EstudianteGustaBasesDatos (cantidad ?nivel))
+    ?respuesta <- (EstudianteGusta (materia basesdatos) (cantidad ?nivel))
 
     ; La respuesta dada no es correcta
     ?validacion <- (ValidoEstudianteGustaBasesDatos false)
@@ -127,7 +127,7 @@
     (printout t "Recuerda tambien que si quieres decir 'no se', debes escribir 'nose' porque 'no se' no es valido" crlf)
     (printout t "Repite tu respuesta (si / no / nose)" crlf)
     (printout t "Entrada: ")
-    (assert (EstudianteGustaBasesDatos (cantidad (read))))
+    (assert (EstudianteGusta  (materia basesdatos) (cantidad (read))))
 )
 
 ; PREGUNTA SOBRE SI LE GUSTA USAR LINUX
@@ -147,8 +147,8 @@
     (EmpateInformacion (flag si))
 
     ; Al estudiante no le gusta ni programar ni las matematicas
-    (EstudianteGustaProgramar (cantidad no | nose))
-    (EstudianteGustaMatematicas (cantidad no | nose))
+    (EstudianteGusta (materia programacion) (cantidad no | nose))
+    (EstudianteGusta (materia matematicas) (cantidad no | nose))
 
     =>
 
@@ -156,7 +156,7 @@
     (printout t "Las opciones son: si / no / nose" crlf)
     (printout t "Recuerda que no puedes responder 'no se', escribelo todo junto como 'nose'" crlf)
     (printout t "Entrada: ")
-    (assert (EstudianteGustaLinux (cantidad (read))))
+    (assert (EstudianteGusta (materia linux) (cantidad (read))))
 )
 
 (defrule ValidarEstudianteGustaLinux
@@ -169,7 +169,7 @@
 
 
     ; El estudiante ya ha introducido una respuesta a la pregunta sobre linux
-    (EstudianteGustaLinux (cantidad ?nivel))
+    (EstudianteGusta (materia linux) (cantidad ?nivel))
 
     ; La respuesta dada no es valida
     (test (and
@@ -199,7 +199,7 @@
     (EmpateInformacion (flag si))
 
     ; Tomo la respuesta dada por el estudiante; que tendremos que retirar
-    ?respuesta <- (EstudianteGustaLinux (cantidad ?nivel))
+    ?respuesta <- (EstudianteGusta (materia linux) (cantidad ?nivel))
 
     ; La respuesta dada no es correcta
     ?validacion <- (ValidoEstudianteGustaLinux false)
@@ -221,5 +221,5 @@
     (printout t "Recuerda tambien que si quieres decir 'no se', debes escribir 'nose' porque 'no se' no es valido" crlf)
     (printout t "Repite tu respuesta (si / no / nose)" crlf)
     (printout t "Entrada: ")
-    (assert (EstudianteGustaLinux (cantidad (read))))
+    (assert (EstudianteGusta (materia linux) (cantidad (read))))
 )

@@ -1,6 +1,8 @@
 ; Modulo en el que vamos a fijar las estructuras que representan las repsuestas dadas por el
 ; estudiante al que estamos aconsejando. Asi tenemos todas los hechos bien estructurados con
 ; deftemplate y en un unico fichero al que consultar fácilmente
+; NOTE: ahora las reglas EstudianteGusta<materia> no se usan. Mirar common/estructuras_comunes.clp
+; para ver la regla por la que se sustituye
 
 ; Representa cuanto le gusta al estudiante el hardware
 (deftemplate EstudianteGustaHardware

@@ -44,7 +44,7 @@
     (printout t "Las opciones son:" crlf)
     (printout t "mucho / normal / poco / nose" crlf)
     (printout t "Entrada: ")
-    (assert (EstudianteGustaHardware (cantidad (read))))
+    (assert (EstudianteGusta (materia hardware) (cantidad (read))))
 )
 
 (defrule ValidarEstudianteGustaHardware
@@ -57,7 +57,7 @@
 
 
     ; El estudiante ya ha introducido una respuesta a la pregunta sobre el hardware
-    (EstudianteGustaHardware (cantidad ?nivel))
+    (EstudianteGusta (materia hardware) (cantidad ?nivel))
 
     ; La respuesta dada no es valida
     (test (and
@@ -88,7 +88,7 @@
     (Terminado (estado no))
 
     ; Tomo la respuesta dada por el estudiante; que tendremos que retirar
-    ?respuesta <- (EstudianteGustaHardware (cantidad ?nivel))
+    ?respuesta <- (EstudianteGusta (materia hardware) (cantidad ?nivel))
 
     ; La respuesta dada no es correcta
     ?validacion <- (ValidoEstudianteGustaHardware false)
@@ -110,7 +110,7 @@
     (printout t "Recuerda tambien que si quieres decir 'no se', debes escribir 'nose' porque 'no se' no es valido" crlf)
     (printout t "Repite tu respuesta (mucho / normal / poco / nose)" crlf)
     (printout t "Entrada: ")
-    (assert (EstudianteGustaHardware (cantidad (read))))
+    (assert (EstudianteGusta (materia hardware) (cantidad (read))))
 )
 
 ;===================================================================================================
@@ -229,7 +229,7 @@
     (printout t "Las opciones son: si / no / nose" crlf)
     (printout t "Recuerda que no puedes responder 'no se', escribelo todo junto como 'nose'" crlf)
     (printout t "Entrada: ")
-    (assert (EstudianteGustaMatematicas (cantidad (read))))
+    (assert (EstudianteGusta (materia matematicas) (cantidad (read))))
 )
 
 (defrule ValidarEstudianteGustaMatematicas
@@ -242,7 +242,7 @@
 
 
     ; El estudiante ya ha introducido una respuesta a la pregunta sobre el hardware
-    (EstudianteGustaMatematicas (cantidad ?nivel))
+    (EstudianteGusta (materia matematicas) (cantidad ?nivel))
 
     ; La respuesta dada no es valida
     (test (and
@@ -272,7 +272,7 @@
     (Terminado (estado no))
 
     ; Tomo la respuesta dada por el estudiante; que tendremos que retirar
-    ?respuesta <- (EstudianteGustaMatematicas (cantidad ?nivel))
+    ?respuesta <- (EstudianteGusta (materia matematicas) (cantidad ?nivel))
 
     ; La respuesta dada no es correcta
     ?validacion <- (ValidoEstudianteGustaMatematicas false)
@@ -294,7 +294,7 @@
     (printout t "Recuerda tambien que si quieres decir 'no se', debes escribir 'nose' porque 'no se' no es valido" crlf)
     (printout t "Repite tu respuesta (si / no / nose)" crlf)
     (printout t "Entrada: ")
-    (assert (EstudianteGustaMatematicas (cantidad (read))))
+    (assert (EstudianteGusta (materia matematicas) (cantidad (read))))
 )
 
 ;===================================================================================================
@@ -327,7 +327,7 @@
     (printout t "Las opciones son: si / no / nose" crlf)
     (printout t "Recuerda que no puedes responder 'no se', escribelo todo junto como 'nose'" crlf)
     (printout t "Entrada: ")
-    (assert (EstudianteGustaProgramar (cantidad (read))))
+    (assert (EstudianteGusta (materia programacion) (cantidad (read))))
 )
 
 (defrule ValidarEstudianteGustaProgramar
@@ -340,7 +340,7 @@
 
 
     ; El estudiante ya ha introducido una respuesta a la pregunta sobre el hardware
-    (EstudianteGustaProgramar (cantidad ?nivel))
+    (EstudianteGusta (materia programacion) (cantidad ?nivel))
 
     ; La respuesta dada no es valida
     (test (and
@@ -375,7 +375,7 @@
     (EmpateInformacion (flag no))
 
     ; Tomo la respuesta dada por el estudiante; que tendremos que retirar
-    ?respuesta <- (EstudianteGustaProgramar (cantidad ?nivel))
+    ?respuesta <- (EstudianteGusta (materia programacion) (cantidad ?nivel))
 
     ; La respuesta dada no es correcta
     ?validacion <- (ValidoEstudianteGustaProgramar false)
@@ -397,5 +397,5 @@
     (printout t "Recuerda tambien que si quieres decir 'no se', debes escribir 'nose' porque 'no se' no es valido" crlf)
     (printout t "Repite tu respuesta (si / no / nose)" crlf)
     (printout t "Entrada: ")
-    (assert (EstudianteGustaProgramar (cantidad (read))))
+    (assert (EstudianteGusta (materia programacion) (cantidad (read))))
 )

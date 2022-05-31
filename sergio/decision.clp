@@ -36,9 +36,10 @@
 ; No podemos tener al mismo tiempo un hecho (Decision ?rama) y (Terminado (estado no))
 (defrule checkDecisionTomadaEntoncesTerminado
 
-
     ; jerarquia de prioridades)
-    (declare (salience 9000))
+    ; Le doy menos prioridad que otras comprobaciones de seguridad porque aunque tome una decision,
+    ; al tener mas modulos el programa no termina
+    (declare (salience 6000))
 
     ; Estamos en el modulo de Sergio
     (ModuloConversacion (modulo sergio))
