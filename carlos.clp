@@ -1056,13 +1056,48 @@ Finalmente me he decidido por la que más interesante me parece a mí. Estas otr
 	(printout t "Te aconsejo la rama " ?ramatexto crlf)
 	(printout t "Las razones son las siguientes:
 " ?text crlf)
+
+    ; Antes de pasar al siguiente modulo, tengo que limpiar los consejos que he usado, para que el
+    ; que viene despues no los vuelva a mostrar, o que esto de problemas de la logica del modulo
+    (assert (QuieroLimpiarYSiguiente si))
+)
+
+; Antes de pasar al siguiente modulo, limpiamos los hechos que pueden interferir en el correcto
+; funcionamiento del siguiente modulo
+; Estos son: los consejos que se quedan sin borrar del sistema (el siguiente modulo puede razonar
+; erroneamente en base a ellos, los puede mostrar al dar el resultado al usuario...)
+(defrule limpiar_antes_de_siguiente
+    ; Estamos en modo de limpieza
+    (QuieroLimpiarYSiguiente si)
+
+    ; Queda un consejo sin limpiar
+    ?consejo <- (Consejo ?rama ?texto)
+
+    =>
+
+    ; Borramos dicho consejo que quedo sin limpiar
+    (retract ?consejo)
+)
+
+; Cuando hayamos terminado de limpiar, ya podemos pasar al siguiente modulo
+(defrule ya_limpiado_siguiente
+
+    ; Nos encontramos en modo de limpieza
+    (QuieroLimpiarYSiguiente si)
+
+    ; No quedan consejos que limpiar
+    (not (Consejo ?rama ?texto))
+
+    =>
+
+    ; Ya es seguro pasar al siguiente modulo
 	(assert (QuieroSiguienteModulo si))
 )
 
 (defrule print1
 (declare (salience -9000))
 (ModuloConversacion (modulo carlos))
-(EstudianteGusta (materia ?x) (cantidad ?y)) 
+(EstudianteGusta (materia ?x) (cantidad ?y))
 =>
 (printout t "EstudianteGusta materia " ?x " cantidad " ?y crlf)
 )
