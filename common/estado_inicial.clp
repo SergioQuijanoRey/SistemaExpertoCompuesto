@@ -8,9 +8,9 @@
     (ModuloConversacion (modulo inicial))
 
     ; Orden de los modulos
-    (SiguienteModulo (modulo inicial) (siguientemodulo sergio))
-    (SiguienteModulo (modulo sergio) (siguientemodulo carlos))
-    (SiguienteModulo (modulo carlos) (siguientemodulo luis))
+    (SiguienteModulo (modulo inicial) (siguientemodulo carlos))
+    (SiguienteModulo (modulo carlos) (siguientemodulo sergio))
+    (SiguienteModulo (modulo sergio) (siguientemodulo luis))
 )
 
 ; Hechos iniciales para indicar el arte ascii de los nombres de los modulos
