@@ -40,3 +40,40 @@
 
     (assert (EstudianteGusta (materia ?x) (cantidad no)))
 )
+
+; Usamos esta regla para unificar la regla que tiene Carlos sobre hardware (si no nose) con la que
+; tiene sergio (mucho normal poco nose)
+(defrule UnificarHardwareLuisToSergio_casosi
+    (declare (salience 9999))
+
+    ; Estamos en el modulo de sergio, que necesita de este cambio
+    (ModuloConversacion (modulo sergio))
+
+    ; Tenemos una regla sobre hardware que hay que unificar
+    ?hecho <- (EstudianteGusta (materia hardware) (cantidad si))
+
+    =>
+
+    ; Retiramos el hecho en el formato antiguo
+    (retract ?hecho)
+
+    ; Introducimos un hecho en el formato nuevo
+    (assert (EstudianteGusta (materia hardware (cantidad mucho))))
+)
+(defrule UnificarHardwareLuisToSergio_casono
+    (declare (salience 9999))
+
+    ; Estamos en el modulo de sergio, que necesita de este cambio
+    (ModuloConversacion (modulo sergio))
+
+    ; Tenemos una regla sobre hardware que hay que unificar
+    ?hecho <- (EstudianteGusta (materia hardware) (cantidad no))
+
+    =>
+
+    ; Retiramos el hecho en el formato antiguo
+    (retract ?hecho)
+
+    ; Introducimos un hecho en el formato nuevo
+    (assert (EstudianteGusta (materia hardware (cantidad poco))))
+)

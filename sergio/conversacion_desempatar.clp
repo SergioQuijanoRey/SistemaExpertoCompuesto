@@ -55,7 +55,7 @@
     (EstudianteGusta (materia matematicas) (cantidad no | nose))
 
     ; Comprobamos que no tenemos la respuesta desde otro modulo
-    (not (EstudianteGusta (mateira basesdatos) (cantidad ?)))
+    (not (EstudianteGusta (materia basesdatos) (cantidad ?)))
 
     =>
 
