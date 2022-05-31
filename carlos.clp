@@ -1083,7 +1083,7 @@ Finalmente me he decidido por la que más interesante me parece a mí. Estas otr
 (defrule ya_limpiado_siguiente
 
     ; Nos encontramos en modo de limpieza
-    (QuieroLimpiarYSiguiente si)
+    ?quierolimpiar <- (QuieroLimpiarYSiguiente si)
 
     ; No quedan consejos que limpiar
     (not (Consejo ?rama ?texto))
@@ -1092,6 +1092,9 @@ Finalmente me he decidido por la que más interesante me parece a mí. Estas otr
 
     ; Ya es seguro pasar al siguiente modulo
 	(assert (QuieroSiguienteModulo si))
+
+    ; Desmarcamos que queramos limpiar
+    (retract ?quierolimpiar)
 )
 
 (defrule print1
