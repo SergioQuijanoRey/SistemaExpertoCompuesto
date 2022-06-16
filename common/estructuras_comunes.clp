@@ -6,7 +6,7 @@
 (deftemplate EstudianteGusta
     (slot materia
         (type SYMBOL)
-        (allowed-symbols hardware matematicas programacion basesdatos proyectos cienciascomputacion ia cienciadatos seguridad web cantidadexamenes cargapractica cargateorica linux)
+        (allowed-symbols hardware matematicas programacion basesdatos proyectos cienciascomputacion ia cienciadatos seguridad web cantidadexamenes cargapractica cargateorica linux administracionsistemas red docencia robotica)
     )
 
     (slot cantidad
