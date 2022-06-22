@@ -6,7 +6,7 @@
 (deftemplate EstudianteGusta
     (slot materia
         (type SYMBOL)
-        (allowed-symbols hardware matematicas programacion basesdatos proyectos cienciascomputacion ia cienciadatos seguridad web cantidadexamenes cargapractica cargateorica linux)
+        (allowed-symbols hardware matematicas programacion basesdatos proyectos cienciascomputacion ia cienciadatos seguridad web cantidadexamenes cargapractica cargateorica linux administracionsistemas red docencia robotica videojuegos)
     )
 
     (slot cantidad
@@ -15,39 +15,28 @@
     )
 )
 
-; Usamos estas reglas para unificar la regla que tiene Carlos sobre hardware (si no nose) con la que
-; tiene sergio (mucho normal poco nose) en el caso de hardware
-(defrule UnificarHardwareLuisToSergio_casosi
+; Definimos estas dos reglas para unificar los criterios de los tres compañeros
+; Sergio tiene reglas que usan mucho poco normal. Luis y Carlos solo tienen reglas de si | no | nose
+; Usamos estas dos reglas para hacer la transformacion
+(defrule UnificarEstudianteGustaMuchoONormal
     (declare (salience 9999))
-
-    ; Estamos en el modulo de sergio, que necesita de este cambio
-    (ModuloConversacion (modulo sergio))
-
-    ; Tenemos una regla sobre hardware que hay que unificar
-    ?hecho <- (EstudianteGusta (materia hardware) (cantidad si))
+    (EstudianteGusta (materia ?x) (cantidad ?y))
+    (test (or
+        (eq ?y normal)
+        (eq ?y mucho)
+    ))
 
     =>
 
-    ; Retiramos el hecho en el formato antiguo
-    (retract ?hecho)
-
-    ; Introducimos un hecho en el formato nuevo
-    (assert (EstudianteGusta (materia hardware) (cantidad mucho)))
+    (assert (EstudianteGusta (materia ?x) (cantidad si)))
 )
-(defrule UnificarHardwareLuisToSergio_casono
+(defrule UnificarEstudianteGustaPoco
     (declare (salience 9999))
 
-    ; Estamos en el modulo de sergio, que necesita de este cambio
-    (ModuloConversacion (modulo sergio))
-
-    ; Tenemos una regla sobre hardware que hay que unificar
-    ?hecho <- (EstudianteGusta (materia hardware) (cantidad no))
+    (EstudianteGusta (materia ?x) (cantidad ?y))
+    (test (eq ?y poco))
 
     =>
 
-    ; Retiramos el hecho en el formato antiguo
-    (retract ?hecho)
-
-    ; Introducimos un hecho en el formato nuevo
-    (assert (EstudianteGusta (materia hardware) (cantidad poco)))
+    (assert (EstudianteGusta (materia ?x) (cantidad no)))
 )

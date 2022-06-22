@@ -1,4 +1,4 @@
-;;; ey
+;;;
 (deffacts Ramas
 	(Rama Computacion_y_Sistemas_Inteligentes)
 	(Rama Ingenieria_del_Software)
@@ -10,53 +10,53 @@
 (deffacts Atributos
    (atributo web Ingenieria_del_Software)
    (atributo web Tecnologias_de_la_Informacion)
-   (atributo prog Computacion_y_Sistemas_Inteligentes)
-   (atributo prog Ingenieria_del_Software)
-   (atributo adsi Ingenieria_de_Computadores)
-   (atributo adsi Sistemas_de_Informacion)
+   (atributo programacion Computacion_y_Sistemas_Inteligentes)
+   (atributo programacion Ingenieria_del_Software)
+   (atributo administracionsistemas Ingenieria_de_Computadores)
+   (atributo administracionsistemas Sistemas_de_Informacion)
    (atributo red Tecnologias_de_la_Informacion)
-   (atributo mates Computacion_y_Sistemas_Inteligentes)
-   (atributo doc Computacion_y_Sistemas_Inteligentes)
-   (atributo doc Sistemas_de_Informacion)
-   (atributo robot Computacion_y_Sistemas_Inteligentes)
-   (atributo robot Ingenieria_de_Computadores)
-   (atributo bd Sistemas_de_Informacion)
-   (atributo hw Ingenieria_de_Computadores)
-   (atributo viju Ingenieria_del_Software)
+   (atributo matematicas Computacion_y_Sistemas_Inteligentes)
+   (atributo docencia Computacion_y_Sistemas_Inteligentes)
+   (atributo docencia Sistemas_de_Informacion)
+   (atributo robotica Computacion_y_Sistemas_Inteligentes)
+   (atributo robotica Ingenieria_de_Computadores)
+   (atributo basesdatos Sistemas_de_Informacion)
+   (atributo hardware Ingenieria_de_Computadores)
+   (atributo videojuegos Ingenieria_del_Software)
 )
 
 (deffacts Razones
    (razon web "te gustaria estudiar programacion web o diseño web")
-   (razon prog "eres un fiera programando")
-   (razon adsi "vas a ser un gran administrador de sistemas")
+   (razon programacion "eres un fiera programando")
+   (razon administracionsistemas "vas a ser un gran administrador de sistemas")
    (razon red "vas a ser mejor en redes que spiderman")
-   (razon mates "te llaman el matemago")
-   (razon doc "se te ve cara de profesor")
-   (razon robot "vas a dominar el mundo con tus robots")
-   (razon bd "te llaman la atencion las bases de datos")
-   (razon hw "por alguna razon te gusta el hardware")
-   (razon viju "quiero jugar tus videojuegos")
+   (razon matematicas "te llaman el matemago")
+   (razon docencia "se te ve cara de profesor")
+   (razon robotica "vas a dominar el mundo con tus robots")
+   (razon basesdatos "te llaman la atencion las bases de datos")
+   (razon hardware "por alguna razon te gusta el hardware")
+   (razon videojuegos "quiero jugar tus videojuegos")
    (razon porDefecto ", bueno, realmente no tengo razones para recomendartela jeje")
 )
 
 (deffacts Consejos
-   (consejo Computacion_y_Sistemas_Inteligentes "")
-   (consejo Ingenieria_del_Software "")
-   (consejo Ingenieria_de_Computadores "")
-   (consejo Sistemas_de_Informacion "")
-   (consejo Tecnologias_de_la_Informacion "")
+   (consejoLuis Computacion_y_Sistemas_Inteligentes "")
+   (consejoLuis Ingenieria_del_Software "")
+   (consejoLuis Ingenieria_de_Computadores "")
+   (consejoLuis Sistemas_de_Informacion "")
+   (consejoLuis Tecnologias_de_la_Informacion "")
 )
 
 (deffacts ModuloIni
-   (modulo inicio)
+   (modulointerno inicio)
 )
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (defrule RazonPorDefecto
 
-
+    (declare (salience 10))
     ; Comprobamos que estamos en el modulo de luis
     (ModuloConversacion (modulo luis))
-   (modulo inicio)
+   (modulointerno inicio)
    (Rama ?r)
    (not (explicacion ?r porDefecto))
    =>
@@ -71,127 +71,137 @@
     ; Comprobamos que estamos en el modulo de luis
     (ModuloConversacion (modulo luis))
 
-   ?f <- (modulo inicio)
+   ?f <- (modulointerno inicio)
    =>
    (retract ?f)
-   (assert (modulo preguntas))
+   (assert (modulointerno preguntas))
 )
 
 ;;;;;;; Preguntas
 
 (defrule PreguntaWeb
 
-
+   (declare (salience 2))
+   
     ; Comprobamos que estamos en el modulo de luis
     (ModuloConversacion (modulo luis))
-   (modulo preguntas)
+   (modulointerno preguntas)
+   (not (EstudianteGusta (materia web) (cantidad ?)))
    =>
    (printout t "¿Te gustaria estudiar programacion web o otros temas de web? (si/no)" crlf)
-   (assert (gusta web (read)))
+   (assert (EstudianteGusta (materia web) (cantidad (read) )) )
 )
 
 (defrule PreguntaProgramar
 
 
-   (declare (salience 1))
+   (declare (salience 2))
 
     ; Comprobamos que estamos en el modulo de luis
     (ModuloConversacion (modulo luis))
-   (modulo preguntas)
+   (modulointerno preguntas)
+   (not (EstudianteGusta (materia programacion) (cantidad ?)))
    =>
    (printout t "¿Se te da bien picar codigo todo el dia? (si/no)" crlf)
-   (assert (gusta prog (read)) )
+   (assert (EstudianteGusta (materia programacion) (cantidad (read) )) )
 )
 
 (defrule PreguntaAdSi
 
 
-   (declare (salience 1))
+   (declare (salience 2))
 
     ; Comprobamos que estamos en el modulo de luis
     (ModuloConversacion (modulo luis))
-   (modulo preguntas)
+   (modulointerno preguntas)
+   (not (EstudianteGusta (materia administracionsistemas) (cantidad ?)))
    =>
    (printout t "¿Te llama la atencion la administracion de sistemas? (si/no)" crlf)
-   (assert (gusta adsi (read)) )
+   (assert (EstudianteGusta (materia administracionsistemas) (cantidad (read) )) )
 )
 
 (defrule PreguntaRed
 
 
-   (declare (salience 1))
+   (declare (salience 2))
 
     ; Comprobamos que estamos en el modulo de luis
     (ModuloConversacion (modulo luis))
-   (modulo preguntas)
+   (modulointerno preguntas)
+   (not (EstudianteGusta (materia red) (cantidad ?)))
    =>
    (printout t "¿Te interesa conocer los entresijos de las redes e internet? (si/no)" crlf)
-   (assert (gusta red (read)) )
+   (assert (EstudianteGusta (materia red) (cantidad (read) )) )
 )
 
 (defrule PreguntaMates
 
 
-   (declare (salience 1))
+   (declare (salience 2))
 
     ; Comprobamos que estamos en el modulo de luis
     (ModuloConversacion (modulo luis))
-   (modulo preguntas)
+   (modulointerno preguntas)
+   (not (EstudianteGusta (materia matematicas) (cantidad ?)))
    =>
    (printout t "¿Eres amigo de las formulas matematicas o al menos las entiendes? (si/no)" crlf)
-   (assert (gusta mates (read)) )
+   (assert (EstudianteGusta (materia matematicas) (cantidad (read) )) )
 )
 
 (defrule PreguntaDocencia
 
 
-   (declare (salience 1))
+   (declare (salience 2))
 
     ; Comprobamos que estamos en el modulo de luis
     (ModuloConversacion (modulo luis))
-   (modulo preguntas)
+   (modulointerno preguntas)
+   (not (EstudianteGusta (materia docencia) (cantidad ?)))
    =>
    (printout t "¿Te ves dando clase en un futuro? (si/no)" crlf)
-   (assert (gusta doc (read)))
+   (assert (EstudianteGusta (materia docencia) (cantidad (read) )))
 )
 
 (defrule PreguntaRobotica
 
 
-   (declare (salience 1))
+   (declare (salience 2))
 
     ; Comprobamos que estamos en el modulo de luis
     (ModuloConversacion (modulo luis))
-   (modulo preguntas)
+   (modulointerno preguntas)
+   (not (EstudianteGusta (materia robotica) (cantidad ?)))
    =>
    (printout t "¿Te interesan los robots (y no solo para dominar el mundo)? (si/no)" crlf)
-   (assert (gusta robot (read)))
+   (assert (EstudianteGusta (materia robotica) (cantidad (read) )))
 )
 
 (defrule PreguntaBD
 
 
-   (declare (salience 1))
+   (declare (salience 2))
 
     ; Comprobamos que estamos en el modulo de luis
     (ModuloConversacion (modulo luis))
-   (modulo preguntas)
+   (modulointerno preguntas)
+   (not (EstudianteGusta (materia basesdatos) (cantidad ?)))
    =>
    (printout t "¿Que tal te fue con las sentencias de SQL, te gusto Base de Datos? (si/no)" crlf)
-   (assert (gusta bd (read)) )
+   (assert (EstudianteGusta (materia basesdatos) (cantidad (read) )) )
 )
 
 (defrule PreguntaHardware
 
 
-   (declare (salience 1))
+   (declare (salience 2))
 
     ; Comprobamos que estamos en el modulo de luis
     (ModuloConversacion (modulo luis))
-   (modulo preguntas)
+   (modulointerno preguntas)
+   (not (EstudianteGusta (materia hardware) (cantidad ?)))
    =>
    (printout t "¿Ey, no seras de los que le gusta mas el hardware? (si/no)" crlf)
-   (assert (gusta hw (read)) )
+   (assert (EstudianteGusta (materia hardware) (cantidad (read) )) )
 )
 
 (defrule PreguntaVideojuegos
@@ -201,12 +211,13 @@
 
     ; Comprobamos que estamos en el modulo de luis
     (ModuloConversacion (modulo luis))
-   ?m <- (modulo preguntas)
+   ?m <- (modulointerno preguntas)
+   (not (EstudianteGusta (materia videojuegos) (cantidad ?)))
    =>
    (retract ?m)
-   (assert (modulo razonamiento))
+   (assert (modulointerno razonamiento))
    (printout t "Hmm, ¿y trabajar en un futuro en algo relacionado con videojuegos? (si/no)" crlf)
-   (assert (gusta viju (read)))
+   (assert (EstudianteGusta (materia videojuegos) (cantidad (read) )) )
 )
 
 
@@ -219,33 +230,35 @@
 
     ; Comprobamos que estamos en el modulo de luis
     (ModuloConversacion (modulo luis))
-   (modulo razonamiento)
-   (gusta ?r ?n)
+   (modulointerno razonamiento)
+   (EstudianteGusta (materia ?r) (cantidad ?n))
+   (test (or (eq ?n si)
+   	     (eq ?n no) ) )
    (atributo ?r ?R)
    =>
    (assert (gustaRama ?r ?R ?n))
 )
 
 (defrule FinRazonamiento
-
+   (declare (salience 0))
     ; Comprobamos que estamos en el modulo de luis
     (ModuloConversacion (modulo luis))
 
-   ?m <- (modulo razonamiento)
+   ?m <- (modulointerno razonamiento)
    =>
    (retract ?m)
-   (assert (modulo explicacion))
+   (assert (modulointerno aconsejar))
 )
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (defrule RazonarConsejo
 
 
-   (declare (salience 1))
+   (declare (salience 2))
 
     ; Comprobamos que estamos en el modulo de luis
     (ModuloConversacion (modulo luis))
-   (modulo explicacion)
+   (modulointerno aconsejar)
    (gustaRama ?r ?R no)
    ?c <- (explicacion ?R porDefecto)
    =>
@@ -260,7 +273,7 @@
 
     ; Comprobamos que estamos en el modulo de luis
     (ModuloConversacion (modulo luis))
-   (modulo explicacion)
+   (modulointerno aconsejar)
    (gustaRama ?r ?R si)
    ?c <- (explicacion ?R ?n)
    (test (neq ?n si))
@@ -270,14 +283,14 @@
 )
 
 (defrule FinConsejos
-
+    (declare (salience 0))
     ; Comprobamos que estamos en el modulo de luis
     (ModuloConversacion (modulo luis))
 
-   ?m <- (modulo explicacion)
+   ?m <- (modulointerno aconsejar)
    =>
    (retract ?m)
-   (assert (modulo motivos))
+   (assert (modulointerno motivos))
 )
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -288,14 +301,14 @@
 
     ; Comprobamos que estamos en el modulo de luis
     (ModuloConversacion (modulo luis))
-   (modulo motivos)
+   (modulointerno motivos)
    (explicacion ?R porDefecto)
-   ?f <- (consejo ?R ?expl)
+   ?f <- (consejoLuis ?R ?expl)
    (razon porDefecto ?motivo)
    (not (defecto ?R))
    =>
    (bind ?texto (str-cat ?expl ?motivo))
-   (assert (consejo ?R ?texto) (defecto ?R))
+   (assert (consejoLuis ?R ?texto) (defecto ?R))
    (retract ?f)
 )
 
@@ -306,40 +319,42 @@
 
     ; Comprobamos que estamos en el modulo de luis
     (ModuloConversacion (modulo luis))
+    (modulointerno motivos)
    ?g <- (gustaRama ?r ?R si)
    (explicacion ?R si)
-   ?e <- (consejo ?R ?expl)
+   ?e <- (consejoLuis ?R ?expl)
    (razon ?r ?motivo)
    =>
    (bind ?texto (str-cat ?expl ?motivo ", "))
-   (assert (consejo ?R ?texto))
+   (assert (consejoLuis ?R ?texto))
    (retract ?g ?e)
 )
 
-(defrule Fin_motivos
-
+(defrule FinMotivos
+    (declare (salience 0))
     ; Comprobamos que estamos en el modulo de luis
     (ModuloConversacion (modulo luis))
 
-   ?f <- (modulo motivos)
+   ?m <- (modulointerno motivos)
    =>
-   (assert (modulo explicacion))
-   (retract ?f)
+   (retract ?m)
+   (assert (modulointerno final))
 )
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (defrule ExplRazonada
 
 
-   (declare (salience 1))
+   (declare (salience 10))
 
     ; Comprobamos que estamos en el modulo de luis
     (ModuloConversacion (modulo luis))
 
-  (modulo explicacion)
+  (modulointerno final)
   (explicacion ?R ?n)
   (test (or (eq ?n si) (eq ?n porDefecto)))
-  (consejo ?R ?expl)
+  (consejoLuis ?R ?expl)
   =>
-  printout t "Te aconsejo " ?R " porque " ?expl crlf)
+  (printout t "Te aconsejo " ?R " porque " ?expl crlf)
 )
+
